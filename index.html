@@ -7,7 +7,13 @@
 <title>Pickleball Club | Official Rankings</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -16,7 +22,16 @@ body {
     color: #172b4d;
 }
 
-header { background: #002b5c; color: white; }
+.hidden {
+    display: none !important;
+}
+
+/* HEADER */
+
+header {
+    background: #002b5c;
+    color: white;
+}
 
 .top-header {
     max-width: 1250px;
@@ -34,21 +49,48 @@ header { background: #002b5c; color: white; }
     letter-spacing: -1px;
 }
 
-.logo span { color: #00a8ff; }
+.logo span {
+    color: #00a8ff;
+}
 
-nav {
+/* NAVIGATION */
+
+.club-nav {
     background: #001f42;
-    padding: 18px 8%;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
+    display: flex;
+    gap: 30px;
+    padding: 0 max(20px,8%);
     border-bottom: 3px solid #0075d5;
 }
 
-.hero {
-    background: linear-gradient(115deg,#003c80,#001b3b);
+.club-nav button {
+    background: transparent;
+    color: #b7c9df;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: 19px 5px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.club-nav button:hover,
+.club-nav button.nav-active {
     color: white;
-    padding: 75px 8%;
+    border-bottom-color: #dfff00;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(
+        115deg,
+        #003c80,
+        #001b3b
+    );
+    color: white;
+    padding: 75px max(20px,8%);
 }
 
 .hero-label {
@@ -62,6 +104,8 @@ nav {
     font-size: clamp(38px,6vw,60px);
     margin: 15px 0 0;
 }
+
+/* CONTENT */
 
 .container {
     max-width: 1250px;
@@ -85,7 +129,9 @@ nav {
     margin: 0;
 }
 
-.actions, .editor-actions, .auth-fields {
+.actions,
+.editor-actions,
+.auth-fields {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -101,15 +147,26 @@ button {
     font-family: inherit;
 }
 
-.primary { background: #0071ce; color: white; }
-.secondary { background: #e5edf5; color: #002b5c; }
+.primary {
+    background: #0071ce;
+    color: white;
+}
 
-button:hover { filter: brightness(.96); }
-button:disabled { opacity: .55; cursor: wait; }
+.secondary {
+    background: #e5edf5;
+    color: #002b5c;
+}
 
-.hidden { display: none !important; }
+button:hover {
+    filter: brightness(.96);
+}
 
-/* RANKINGS */
+button:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+/* RANKINGS TABLE */
 
 .table-wrapper {
     background: white;
@@ -125,7 +182,9 @@ table {
     border-collapse: collapse;
 }
 
-thead { background: #eef2f7; }
+thead {
+    background: #eef2f7;
+}
 
 th {
     text-align: left;
@@ -140,7 +199,9 @@ td {
     border-bottom: 1px solid #e8edf2;
 }
 
-tbody tr:hover { background: #f4f9ff; }
+tbody tr:hover {
+    background: #f4f9ff;
+}
 
 .rank {
     font-size: 27px;
@@ -193,7 +254,8 @@ tbody tr:hover { background: #f4f9ff; }
     color: #002b5c;
 }
 
-input, select {
+input,
+select {
     padding: 12px;
     border: 1px solid #cbd5df;
     border-radius: 4px;
@@ -212,7 +274,8 @@ label {
 
 .edit-row {
     display: grid;
-    grid-template-columns: minmax(150px,1fr)
+    grid-template-columns:
+        minmax(150px,1fr)
         repeat(3,minmax(80px,130px));
     gap: 15px;
     align-items: center;
@@ -220,9 +283,13 @@ label {
     border-bottom: 1px solid #e8edf2;
 }
 
-.edit-row input { width: 100%; }
+.edit-row input {
+    width: 100%;
+}
 
-.editor-actions { margin-top: 25px; }
+.editor-actions {
+    margin-top: 25px;
+}
 
 .status {
     margin-top: 20px;
@@ -239,7 +306,9 @@ label {
     flex-wrap: wrap;
 }
 
-.format-row select { min-width: 170px; }
+.format-row select {
+    min-width: 170px;
+}
 
 .match-grid {
     display: grid;
@@ -304,6 +373,212 @@ label {
     color: #003b7a;
 }
 
+/* HEAD TO HEAD */
+
+.h2h-page {
+    background: linear-gradient(
+        180deg,
+        #070745,
+        #12125b
+    );
+    min-height: 800px;
+    color: white;
+    padding: 65px 25px 100px;
+}
+
+.h2h-container {
+    max-width: 1150px;
+    margin: auto;
+}
+
+.h2h-title {
+    text-align: center;
+    font-size: clamp(30px,4vw,48px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.h2h-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #aeb9dd;
+    margin: 15px 0 45px;
+}
+
+/* H2H SEARCH */
+
+.h2h-search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.h2h-search-grid label {
+    color: #aab9e9;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.h2h-search-grid input {
+    width: 100%;
+    height: 50px;
+    background: #111a60;
+    border: 1px solid #5371bb;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+}
+
+.h2h-search-grid input::placeholder {
+    color: #a6b3da;
+}
+
+.h2h-status {
+    text-align: center;
+    color: #c5d2f2;
+    min-height: 22px;
+    font-size: 13px;
+    margin-bottom: 35px;
+}
+
+/* PLAYER COMPARISON */
+
+.h2h-players {
+    display: grid;
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(150px,1.3fr)
+        minmax(0,1fr);
+    align-items: center;
+    gap: 15px;
+}
+
+.h2h-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.h2h-avatar {
+    width: clamp(75px,10vw,140px);
+    height: clamp(75px,10vw,140px);
+    border-radius: 50%;
+    border: 2px solid #dfff00;
+    background: #0d478a;
+    display: grid;
+    place-items: center;
+    font-size: clamp(24px,4vw,45px);
+    font-weight: 800;
+    color: white;
+}
+
+.h2h-profile h3 {
+    color: white;
+    font-size: clamp(15px,2.3vw,25px);
+    margin: 0;
+}
+
+.h2h-rank-label {
+    padding: 9px 22px;
+    background: #126eaa;
+    color: white;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.h2h-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h2h-circle {
+    width: min(100%,260px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 5px solid #0d72aa;
+    border-top-color: #dfff00;
+    display: grid;
+    place-items: center;
+}
+
+.h2h-wins {
+    width: 145%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.h2h-wins > span {
+    font-size: clamp(28px,5vw,60px);
+    font-weight: 900;
+    color: white;
+}
+
+.h2h-wins > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.h2h-wins strong {
+    font-size: 24px;
+}
+
+.h2h-wins small {
+    font-size: 12px;
+    color: #b5c5e7;
+}
+
+/* COMPARISON STATISTICS */
+
+.h2h-stats {
+    margin: 55px auto 0;
+    max-width: 1000px;
+}
+
+.h2h-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 12px;
+    padding: 20px 12px;
+    align-items: center;
+    border-bottom: 2px solid #126eaa;
+}
+
+.h2h-stat-row:nth-child(even) {
+    border-bottom-color: #dfff00;
+}
+
+.h2h-stat-row strong {
+    font-size: 18px;
+    color: white;
+}
+
+.h2h-stat-row strong:last-child {
+    text-align: right;
+}
+
+.h2h-stat-row span {
+    font-size: 14px;
+    color: #b8c6e8;
+    text-align: center;
+}
+
+.h2h-footnote {
+    text-align: center;
+    font-size: 12px;
+    color: #aab9dd;
+    margin-top: 28px;
+}
+
 /* FOOTER */
 
 footer {
@@ -311,24 +586,105 @@ footer {
     color: white;
     text-align: center;
     padding: 50px 20px;
-    margin-top: 100px;
 }
 
-footer h3 { margin: 0; font-size: 24px; }
-footer p { color: #9cb0c7; font-size: 13px; }
+footer h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+footer p {
+    color: #9cb0c7;
+    font-size: 13px;
+}
+
+/* MOBILE */
 
 @media(max-width:700px) {
-    .match-grid { grid-template-columns: 1fr; }
 
-    .edit-row {
-        grid-template-columns: repeat(3,minmax(0,1fr));
+    .match-grid {
+        grid-template-columns: 1fr;
     }
 
-    .edit-row strong { grid-column: 1/-1; }
-    .top-header { padding: 20px; }
-    .logo { font-size: 20px; }
-    .hero { padding: 60px 20px; }
-    .container { padding: 0 15px; margin-top: 30px; }
+    .edit-row {
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+
+    .edit-row strong {
+        grid-column: 1/-1;
+    }
+
+    .top-header {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .container {
+        padding: 0 15px;
+        margin-top: 30px;
+    }
+
+    .h2h-page {
+        padding: 45px 14px 70px;
+    }
+
+    .h2h-search-grid {
+        gap: 12px;
+    }
+
+    .h2h-players {
+        grid-template-columns:
+            minmax(0,1fr)
+            minmax(90px,1fr)
+            minmax(0,1fr);
+        gap: 5px;
+    }
+
+    .h2h-circle {
+        border-width: 3px;
+    }
+
+    .h2h-wins {
+        width: 130%;
+    }
+
+    .h2h-wins strong {
+        font-size: 16px;
+    }
+
+    .h2h-wins small {
+        font-size: 10px;
+    }
+
+    .h2h-profile h3 {
+        font-size: 13px;
+    }
+
+    .h2h-rank-label {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+    .h2h-stat-row {
+        padding: 17px 5px;
+        gap: 8px;
+    }
+
+    .h2h-stat-row strong {
+        font-size: 14px;
+    }
+
+    .h2h-stat-row span {
+        font-size: 11px;
+    }
 }
 </style>
 </head>
@@ -340,288 +696,606 @@ footer p { color: #9cb0c7; font-size: 13px; }
         <div class="logo">
             PICKLEBALL<span>CLUB</span>
         </div>
+
         <div>2026 SEASON</div>
     </div>
 </header>
 
-<nav>Rankings</nav>
+<!-- NAVIGATION -->
 
-<section class="hero">
+<nav class="club-nav">
+
+    <button
+        id="rankingsTab"
+        class="nav-active"
+        type="button"
+    >
+        Rankings
+    </button>
+
+    <button
+        id="h2hTab"
+        type="button"
+    >
+        Head-to-Head
+    </button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="heroSection">
     <div class="hero-label">2026 SEASON</div>
     <h1>Official Rankings</h1>
 </section>
 
-<main class="container">
+<!-- RANKINGS PAGE -->
 
-<div class="section-header">
-    <h2>Club Rankings</h2>
+<main class="container" id="rankingsPage">
 
-    <div class="actions">
-        <button class="secondary" id="adminButton">
-            Admin Login
-        </button>
+    <div class="section-header">
 
-        <button class="primary hidden" id="matchButton">
-            Enter Match
-        </button>
+        <h2>Club Rankings</h2>
 
-        <button class="primary hidden" id="registerButton">
-            Register Player
-        </button>
+        <div class="actions">
 
-        <button class="primary hidden" id="editButton">
-            Edit Rankings
-        </button>
+            <button
+                class="secondary"
+                id="adminButton"
+            >
+                Admin Login
+            </button>
 
-        <button class="secondary hidden" id="logoutButton">
-            Log Out
-        </button>
+            <button
+                class="primary hidden"
+                id="matchButton"
+            >
+                Enter Match
+            </button>
+
+            <button
+                class="primary hidden"
+                id="registerButton"
+            >
+                Register Player
+            </button>
+
+            <button
+                class="primary hidden"
+                id="editButton"
+            >
+                Edit Rankings
+            </button>
+
+            <button
+                class="secondary hidden"
+                id="logoutButton"
+            >
+                Log Out
+            </button>
+
+        </div>
     </div>
-</div>
 
-<!-- ADMIN LOGIN -->
+    <!-- ADMIN LOGIN -->
 
-<section id="authPanel" class="admin-panel hidden">
+    <section
+        id="authPanel"
+        class="admin-panel hidden"
+    >
 
-    <h3>Administrator Login</h3>
+        <h3>Administrator Login</h3>
 
-    <form id="loginForm" class="auth-fields">
+        <form id="loginForm" class="auth-fields">
 
-        <input id="email" type="email"
-            placeholder="Email"
-            autocomplete="username" required>
+            <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                autocomplete="username"
+                required
+            >
 
-        <input id="password" type="password"
-            placeholder="Password"
-            autocomplete="current-password" required>
+            <input
+                id="password"
+                type="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+            >
 
-        <button id="loginButton" class="primary"
-            type="submit">Log In</button>
+            <button
+                id="loginButton"
+                class="primary"
+                type="submit"
+            >
+                Log In
+            </button>
 
-    </form>
-</section>
+        </form>
 
-<!-- ENTER MATCH -->
+    </section>
 
-<section id="matchPanel" class="admin-panel hidden">
+    <!-- ENTER MATCH -->
 
-    <h3>Enter Doubles Match</h3>
+    <section
+        id="matchPanel"
+        class="admin-panel hidden"
+    >
 
-    <form id="matchForm">
+        <h3>Enter Doubles Match</h3>
 
-        <div class="format-row">
+        <form id="matchForm">
 
-            <div>
-                <label for="bestOf">Match Format</label>
-
-                <select id="bestOf">
-                    <option value="1">Single Game</option>
-                    <option value="3">Best of 3</option>
-                    <option value="5">Best of 5</option>
-                </select>
-            </div>
-
-            <div id="targetContainer">
-                <label for="gameTarget">
-                    Play To
-                </label>
-
-                <select id="gameTarget">
-                    <option value="7">7 Points</option>
-                    <option value="11" selected>
-                        11 Points
-                    </option>
-                </select>
-            </div>
-
-        </div>
-
-        <div class="match-grid">
-
-            <div class="team">
-
-                <h4>Team 1</h4>
-
-                <label for="t1p1">Player 1</label>
-                <select id="t1p1" required></select>
-
-                <label for="t1p2">Player 2</label>
-                <select id="t1p2" required></select>
-
-            </div>
-
-            <div class="team">
-
-                <h4>Team 2</h4>
-
-                <label for="t2p1">Player 1</label>
-                <select id="t2p1" required></select>
-
-                <label for="t2p2">Player 2</label>
-                <select id="t2p2" required></select>
-
-            </div>
-
-        </div>
-
-        <div class="score-section">
-
-            <h4 id="scoreHeading">Final Game Score</h4>
-
-            <p class="match-hint" id="scoreInstructions">
-                Enter the final score of the game.
-            </p>
-
-            <div class="score-grid">
+            <div class="format-row">
 
                 <div>
-                    <label for="team1Score">
-                        Team 1
+                    <label for="bestOf">
+                        Match Format
                     </label>
 
-                    <input
-                        id="team1Score"
-                        type="number"
-                        min="0"
-                        max="999"
-                        step="1"
-                        placeholder="11"
-                        required>
+                    <select id="bestOf">
+                        <option value="1">
+                            Single Game
+                        </option>
+                        <option value="3">
+                            Best of 3
+                        </option>
+                        <option value="5">
+                            Best of 5
+                        </option>
+                    </select>
                 </div>
 
-                <div>
-                    <label for="team2Score">
-                        Team 2
+                <div id="targetContainer">
+
+                    <label for="gameTarget">
+                        Play To
                     </label>
 
-                    <input
-                        id="team2Score"
-                        type="number"
-                        min="0"
-                        max="999"
-                        step="1"
-                        placeholder="8"
-                        required>
+                    <select id="gameTarget">
+                        <option value="7">
+                            7 Points
+                        </option>
+                        <option value="11" selected>
+                            11 Points
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="match-grid">
+
+                <div class="team">
+
+                    <h4>Team 1</h4>
+
+                    <label for="t1p1">
+                        Player 1
+                    </label>
+                    <select
+                        id="t1p1"
+                        required
+                    ></select>
+
+                    <label for="t1p2">
+                        Player 2
+                    </label>
+                    <select
+                        id="t1p2"
+                        required
+                    ></select>
+
+                </div>
+
+                <div class="team">
+
+                    <h4>Team 2</h4>
+
+                    <label for="t2p1">
+                        Player 1
+                    </label>
+                    <select
+                        id="t2p1"
+                        required
+                    ></select>
+
+                    <label for="t2p2">
+                        Player 2
+                    </label>
+                    <select
+                        id="t2p2"
+                        required
+                    ></select>
+
                 </div>
 
             </div>
 
-        </div>
+            <div class="score-section">
 
-        <div id="winnerPreview" class="winner-preview">
-            Select players and enter the result.
-        </div>
+                <h4 id="scoreHeading">
+                    Final Game Score
+                </h4>
+
+                <p
+                    class="match-hint"
+                    id="scoreInstructions"
+                >
+                    Enter the final game score.
+                </p>
+
+                <div class="score-grid">
+
+                    <div>
+                        <label for="team1Score">
+                            Team 1
+                        </label>
+
+                        <input
+                            id="team1Score"
+                            type="number"
+                            min="0"
+                            max="999"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="team2Score">
+                            Team 2
+                        </label>
+
+                        <input
+                            id="team2Score"
+                            type="number"
+                            min="0"
+                            max="999"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div
+                id="winnerPreview"
+                class="winner-preview"
+            >
+                Select players and enter the result.
+            </div>
+
+            <div class="editor-actions">
+
+                <button
+                    class="primary"
+                    id="submitMatch"
+                    type="submit"
+                >
+                    Save Match Result
+                </button>
+
+                <button
+                    class="secondary"
+                    id="cancelMatch"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <!-- REGISTER PLAYER -->
+
+    <section
+        id="registerPanel"
+        class="admin-panel hidden"
+    >
+
+        <h3>Register New Player</h3>
+
+        <form id="registerForm" class="auth-fields">
+
+            <input
+                id="newPlayerName"
+                type="text"
+                placeholder="Full Name"
+                minlength="2"
+                maxlength="80"
+                required
+            >
+
+            <button
+                class="primary"
+                id="registerSubmit"
+                type="submit"
+            >
+                Add Player
+            </button>
+
+            <button
+                class="secondary"
+                id="cancelRegister"
+                type="button"
+            >
+                Cancel
+            </button>
+
+        </form>
+
+        <p class="match-hint">
+            New players start with 1,500 Elo points,
+            0 wins and 0 losses.
+        </p>
+
+    </section>
+
+    <!-- EDIT RANKINGS -->
+
+    <section
+        id="editor"
+        class="admin-panel hidden"
+    >
+
+        <h3>Edit Player Rankings</h3>
+
+        <div id="editRows"></div>
 
         <div class="editor-actions">
 
-            <button class="primary" id="submitMatch"
-                type="submit">
-                Save Match Result
+            <button
+                class="primary"
+                id="saveButton"
+            >
+                Save Changes
             </button>
 
-            <button class="secondary" id="cancelMatch"
-                type="button">
+            <button
+                class="secondary"
+                id="cancelButton"
+            >
                 Cancel
             </button>
 
         </div>
 
-    </form>
+    </section>
 
-</section>
+    <!-- RANKINGS TABLE -->
 
-<!-- REGISTER PLAYER -->
+    <div class="table-wrapper">
 
-<section id="registerPanel" class="admin-panel hidden">
+        <table>
 
-    <h3>Register New Player</h3>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Points</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Win %</th>
+                </tr>
+            </thead>
 
-    <form id="registerForm" class="auth-fields">
+            <tbody id="rankingsBody"></tbody>
 
-        <input id="newPlayerName"
-            type="text"
-            placeholder="Full Name"
-            minlength="2"
-            maxlength="80"
-            required>
+        </table>
 
-        <button class="primary" id="registerSubmit"
-            type="submit">
-            Add Player
-        </button>
+    </div>
 
-        <button class="secondary" id="cancelRegister"
-            type="button">
-            Cancel
-        </button>
+    <p
+        id="status"
+        class="status"
+        role="status"
+    ></p>
 
-    </form>
+</main>
 
-    <p class="match-hint">
-        New players start with 1,500 Elo points,
-        0 wins, and 0 losses.
-    </p>
+<!-- HEAD TO HEAD PAGE -->
 
-</section>
+<section
+    id="h2hPage"
+    class="h2h-page hidden"
+>
 
-<!-- EDIT RANKINGS -->
+    <div class="h2h-container">
 
-<section id="editor" class="admin-panel hidden">
+        <h2 class="h2h-title">
+            HEAD TO HEAD
+        </h2>
 
-    <h3>Edit Player Rankings</h3>
+        <p class="h2h-subtitle">
+            Compare club players
+        </p>
 
-    <div id="editRows"></div>
+        <!-- PLAYER SEARCH -->
 
-    <div class="editor-actions">
+        <div class="h2h-search-grid">
 
-        <button class="primary" id="saveButton">
-            Save Changes
-        </button>
+            <div>
 
-        <button class="secondary" id="cancelButton">
-            Cancel
-        </button>
+                <label for="h2hLeftSearch">
+                    PLAYER 1
+                </label>
+
+                <input
+                    id="h2hLeftSearch"
+                    type="search"
+                    list="h2hPlayerOptions"
+                    placeholder="Search player"
+                    autocomplete="off"
+                >
+
+            </div>
+
+            <div>
+
+                <label for="h2hRightSearch">
+                    PLAYER 2
+                </label>
+
+                <input
+                    id="h2hRightSearch"
+                    type="search"
+                    list="h2hPlayerOptions"
+                    placeholder="Search player"
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+        <datalist id="h2hPlayerOptions"></datalist>
+
+        <p
+            id="h2hStatus"
+            class="h2h-status"
+            role="status"
+        ></p>
+
+        <!-- PLAYER COMPARISON -->
+
+        <div id="h2hComparison">
+
+            <div class="h2h-players">
+
+                <div class="h2h-profile">
+
+                    <div
+                        class="h2h-avatar"
+                        id="h2hLeftAvatar"
+                    >WG</div>
+
+                    <h3 id="h2hLeftName">
+                        Will Gottesman
+                    </h3>
+
+                    <div class="h2h-rank-label">
+                        <span id="h2hLeftRank">
+                            Rank 1
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="h2h-center">
+
+                    <div class="h2h-circle">
+
+                        <div class="h2h-wins">
+
+                            <span id="h2hLeftWins">
+                                0
+                            </span>
+
+                            <div>
+                                <strong>VS</strong>
+                                <small>WINS</small>
+                            </div>
+
+                            <span id="h2hRightWins">
+                                0
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="h2h-profile">
+
+                    <div
+                        class="h2h-avatar"
+                        id="h2hRightAvatar"
+                    >MW</div>
+
+                    <h3 id="h2hRightName">
+                        Matthew Wallis
+                    </h3>
+
+                    <div class="h2h-rank-label">
+                        <span id="h2hRightRank">
+                            Rank 2
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- COMPARISON STATS -->
+
+            <div class="h2h-stats">
+
+                <div class="h2h-stat-row">
+                    <strong id="h2hLeftElo">1500</strong>
+                    <span>Elo Points</span>
+                    <strong id="h2hRightElo">1500</strong>
+                </div>
+
+                <div class="h2h-stat-row">
+                    <strong id="h2hLeftRecord">0–0</strong>
+                    <span>Overall W/L</span>
+                    <strong id="h2hRightRecord">0–0</strong>
+                </div>
+
+                <div class="h2h-stat-row">
+                    <strong id="h2hLeftPct">0.0%</strong>
+                    <span>Win Percentage</span>
+                    <strong id="h2hRightPct">0.0%</strong>
+                </div>
+
+                <div class="h2h-stat-row">
+                    <strong id="h2hLeftH2H">0</strong>
+                    <span>H2H Wins</span>
+                    <strong id="h2hRightH2H">0</strong>
+                </div>
+
+                <div class="h2h-stat-row">
+                    <strong id="h2hLeftMeetings">0</strong>
+                    <span>Matches Against Each Other</span>
+                    <strong id="h2hRightMeetings">0</strong>
+                </div>
+
+            </div>
+
+            <p class="h2h-footnote">
+                Head-to-head results count only doubles
+                matches where these players were on
+                opposing teams.
+            </p>
+
+        </div>
 
     </div>
 
 </section>
 
-<!-- LEADERBOARD -->
-
-<div class="table-wrapper">
-
-    <table>
-
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Points</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Win %</th>
-            </tr>
-        </thead>
-
-        <tbody id="rankingsBody"></tbody>
-
-    </table>
-
-</div>
-
-<p class="status" id="status" role="status"></p>
-
-</main>
+<!-- FOOTER -->
 
 <footer>
     <h3>Pickleball Club</h3>
     <p>Official Rankings — 2026 Season</p>
+    <p>© 2026 Pickleball Club</p>
 </footer>
 
 <script type="module">
 
 import {createClient} from
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+/* SUPABASE CONNECTION */
 
 const supabase = createClient(
     "https://iwqidqqwrojottqamyte.supabase.co",
@@ -633,6 +1307,7 @@ const $ = id => document.getElementById(id);
 let players = [];
 let isAdmin = false;
 let pendingMatchId = null;
+let h2hRequestCounter = 0;
 
 function status(message) {
     $("status").textContent = message;
@@ -642,6 +1317,23 @@ function sortedPlayers() {
     return [...players].sort(
         (a,b) => b.points-a.points || a.id-b.id
     );
+}
+
+function winPct(p) {
+    const total = p.wins+p.losses;
+
+    return total
+        ? (100*p.wins/total).toFixed(1)+"%"
+        : "0.0%";
+}
+
+function initials(name) {
+    return name
+        .split(" ")
+        .filter(Boolean)
+        .map(part=>part[0])
+        .join("")
+        .toUpperCase();
 }
 
 /* RANKINGS */
@@ -666,11 +1358,7 @@ function renderRankings() {
 
         const avatar = document.createElement("span");
         avatar.className = "avatar";
-
-        avatar.textContent = p.name
-            .split(" ")
-            .map(part=>part[0])
-            .join("");
+        avatar.textContent = initials(p.name);
 
         const name = document.createElement("span");
         name.className = "player";
@@ -685,12 +1373,7 @@ function renderRankings() {
 
         tr.insertCell().textContent = p.wins;
         tr.insertCell().textContent = p.losses;
-
-        const matches = p.wins+p.losses;
-
-        tr.insertCell().textContent = matches
-            ? (100*p.wins/matches).toFixed(1)+"%"
-            : "0.0%";
+        tr.insertCell().textContent = winPct(p);
 
         tbody.append(tr);
     });
@@ -708,22 +1391,25 @@ async function loadRankings() {
     }
 
     players = data || [];
+
     renderRankings();
+    populateH2HOptions();
 
     status("Rankings updated.");
+
     return true;
 }
 
-/* ADMIN LOGIN */
+/* ADMIN */
 
 async function checkAdmin() {
 
-    const {data:{user}} =
+    const {data:{user},error:authError} =
         await supabase.auth.getUser();
 
     isAdmin = false;
 
-    if(user) {
+    if(!authError && user) {
 
         const {data,error} = await supabase
             .from("club_admins")
@@ -816,7 +1502,7 @@ $("logoutButton").onclick = async () => {
 function populatePlayers() {
 
     const ordered = [...players].sort(
-        (a,b) => a.id-b.id
+        (a,b)=>a.id-b.id
     );
 
     for(const id of [
@@ -829,13 +1515,11 @@ function populatePlayers() {
         const blank = document.createElement("option");
         blank.value = "";
         blank.textContent = "Select Player";
-
         select.append(blank);
 
         for(const p of ordered) {
 
             const option = document.createElement("option");
-
             option.value = p.id;
             option.textContent = p.name;
 
@@ -845,10 +1529,8 @@ function populatePlayers() {
 }
 
 function eloK(target,bestOf) {
-
     if(bestOf===5) return 60;
     if(bestOf===3) return 40;
-
     return target===7 ? 16 : 24;
 }
 
@@ -875,8 +1557,8 @@ function calculateElo(ids,team1Wins,target,bestOf) {
     );
 }
 
-function signed(number) {
-    return (number>=0?"+":"")+number;
+function signed(n) {
+    return (n>=0?"+":"")+n;
 }
 
 function updateFormat() {
@@ -893,10 +1575,10 @@ function updateFormat() {
         : "Final Series Score";
 
     $("scoreInstructions").textContent = single
-        ? "Enter the final score of the game. Win by two."
+        ? "Enter the final score. Win by two."
         : bestOf===3
-            ? "Enter sets won: 2–0 or 2–1, either way."
-            : "Enter sets won: 3–0, 3–1, or 3–2, either way.";
+            ? "Enter 2–0 or 2–1, either way."
+            : "Enter 3–0, 3–1 or 3–2, either way.";
 
     $("team1Score").placeholder = single
         ? $("gameTarget").value
@@ -936,8 +1618,7 @@ function readMatch() {
     }
 
     if(
-        raw1==="" ||
-        raw2==="" ||
+        raw1==="" || raw2==="" ||
         !Number.isSafeInteger(s1) ||
         !Number.isSafeInteger(s2) ||
         s1<0 || s2<0 ||
@@ -964,8 +1645,8 @@ function readMatch() {
         if(!normal && !extended) {
             return {
                 error:
-                "Single games must reach "+
-                target+" and be won by two."
+                    "Single games must reach "+
+                    target+" and be won by two."
             };
         }
 
@@ -977,7 +1658,7 @@ function readMatch() {
             return {
                 error:bestOf===3
                     ? "Enter 2–0 or 2–1."
-                    : "Enter 3–0, 3–1, or 3–2."
+                    : "Enter 3–0, 3–1 or 3–2."
             };
         }
     }
@@ -1032,7 +1713,6 @@ $("matchButton").onclick = () => {
     pendingMatchId = null;
 
     $("matchPanel").classList.remove("hidden");
-
     updateFormat();
 };
 
@@ -1047,7 +1727,6 @@ for(const id of [
     "t1p1","t1p2","t2p1","t2p2",
     "team1Score","team2Score"
 ]) {
-
     $(id).addEventListener("input",() => {
         pendingMatchId = null;
         updatePreview();
@@ -1124,7 +1803,7 @@ $("matchForm").onsubmit = async event => {
     }
 };
 
-/* REGISTER NEW PLAYER */
+/* REGISTER PLAYER */
 
 $("registerButton").onclick = () => {
 
@@ -1176,7 +1855,7 @@ $("registerForm").onsubmit = async event => {
     }
 };
 
-/* MANUAL RANKINGS EDITOR */
+/* EDIT RANKINGS */
 
 $("editButton").onclick = () => {
 
@@ -1242,7 +1921,9 @@ $("saveButton").onclick = async () => {
         document.querySelectorAll(".edit-row")
     ) {
 
-        const item = {id:Number(row.dataset.id)};
+        const item = {
+            id:Number(row.dataset.id)
+        };
 
         for(const input of row.querySelectorAll("input")) {
 
@@ -1283,11 +1964,219 @@ $("saveButton").onclick = async () => {
     await loadRankings();
 };
 
+/* HEAD TO HEAD NAVIGATION */
+
+function showPage(page) {
+
+    const h2h = page==="h2h";
+
+    $("rankingsPage").classList.toggle("hidden",h2h);
+    $("heroSection").classList.toggle("hidden",h2h);
+    $("h2hPage").classList.toggle("hidden",!h2h);
+
+    $("rankingsTab").classList.toggle(
+        "nav-active",!h2h
+    );
+
+    $("h2hTab").classList.toggle(
+        "nav-active",h2h
+    );
+
+    if(h2h) {
+        loadRankings().then(ok=>{
+            if(ok) {
+                $("h2hStatus").textContent = "";
+                refreshH2H();
+            }
+        });
+    }
+
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+$("rankingsTab").onclick = () => showPage("rankings");
+$("h2hTab").onclick = () => showPage("h2h");
+
+/* HEAD TO HEAD SEARCH */
+
+function populateH2HOptions() {
+
+    const list = $("h2hPlayerOptions");
+    list.replaceChildren();
+
+    for(const p of [...players].sort(
+        (a,b)=>a.name.localeCompare(b.name)
+    )) {
+        const option = document.createElement("option");
+        option.value = p.name;
+        list.append(option);
+    }
+
+    if(!$("h2hLeftSearch").value && players.length) {
+        $("h2hLeftSearch").value =
+            sortedPlayers()[0].name;
+    }
+
+    if(!$("h2hRightSearch").value && players.length>1) {
+        $("h2hRightSearch").value =
+            sortedPlayers()[1].name;
+    }
+}
+
+function findH2HPlayer(value) {
+
+    return players.find(
+        p=>p.name.toLowerCase()===value
+            .trim().toLowerCase()
+    );
+}
+
+function renderH2HPlayer(side,player) {
+
+    const prefix = side==="left" ? "h2hLeft" : "h2hRight";
+
+    const rank = sortedPlayers().findIndex(
+        p=>p.id===player.id
+    )+1;
+
+    $(prefix+"Avatar").textContent =
+        initials(player.name);
+
+    $(prefix+"Name").textContent = player.name;
+    $(prefix+"Rank").textContent = "Rank "+rank;
+
+    $(prefix+"Elo").textContent =
+        player.points.toLocaleString();
+
+    $(prefix+"Record").textContent =
+        player.wins+"–"+player.losses;
+
+    $(prefix+"Pct").textContent =
+        winPct(player);
+}
+
+async function refreshH2H() {
+
+    const requestNumber = ++h2hRequestCounter;
+
+    const left = findH2HPlayer(
+        $("h2hLeftSearch").value
+    );
+
+    const right = findH2HPlayer(
+        $("h2hRightSearch").value
+    );
+
+    if(!left || !right) {
+
+        $("h2hComparison").classList.add("hidden");
+
+        $("h2hStatus").textContent =
+            "Select two registered players.";
+
+        return;
+    }
+
+    if(left.id===right.id) {
+
+        $("h2hComparison").classList.add("hidden");
+
+        $("h2hStatus").textContent =
+            "Select two different players.";
+
+        return;
+    }
+
+    renderH2HPlayer("left",left);
+    renderH2HPlayer("right",right);
+
+    $("h2hStatus").textContent =
+        "Loading head-to-head results...";
+
+    // Supabase function counts matches in which
+    // selected players were opponents.
+
+    const {data,error} = await supabase.rpc(
+        "club_head_to_head",
+        {
+            p_left:left.id,
+            p_right:right.id
+        }
+    );
+
+    if(requestNumber!==h2hRequestCounter) return;
+
+    if(error) {
+
+        $("h2hComparison").classList.add("hidden");
+
+        $("h2hStatus").textContent =
+            "Could not load head-to-head: "+
+            error.message;
+
+        return;
+    }
+
+    const result = Array.isArray(data) ? data[0] : data;
+
+    const leftWins = Number(result?.left_wins ?? 0);
+    const rightWins = Number(result?.right_wins ?? 0);
+    const meetings = Number(result?.meetings ?? 0);
+
+    $("h2hLeftWins").textContent = leftWins;
+    $("h2hRightWins").textContent = rightWins;
+
+    $("h2hLeftH2H").textContent = leftWins;
+    $("h2hRightH2H").textContent = rightWins;
+
+    $("h2hLeftMeetings").textContent = meetings;
+    $("h2hRightMeetings").textContent = meetings;
+
+    $("h2hComparison").classList.remove("hidden");
+
+    $("h2hStatus").textContent = meetings
+        ? meetings+" head-to-head match"+
+          (meetings===1?"":"es")+" recorded"
+        : "No head-to-head matches recorded yet.";
+}
+
+for(const id of [
+    "h2hLeftSearch",
+    "h2hRightSearch"
+]) {
+
+    $(id).addEventListener(
+        "change",refreshH2H
+    );
+
+    $(id).addEventListener("input",() => {
+        // Run when the typed name exactly matches
+        // a registered player.
+        const left = findH2HPlayer(
+            $("h2hLeftSearch").value
+        );
+
+        const right = findH2HPlayer(
+            $("h2hRightSearch").value
+        );
+
+        if(left && right) {
+            refreshH2H();
+        } else {
+            h2hRequestCounter++;
+            $("h2hComparison").classList.add("hidden");
+            $("h2hStatus").textContent =
+                "Choose two registered players.";
+        }
+    });
+}
+
 /* INITIALIZE */
 
 await loadRankings();
 await checkAdmin();
 
 </script>
+
 </body>
 </html>
