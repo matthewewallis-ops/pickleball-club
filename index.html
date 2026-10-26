@@ -1,766 +1,215 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pickleball Club | Official Rankings</title>
-
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f6f8;
-    color: #172b4d;
-}
-
-header {
-    background: #002b5c;
-    color: white;
-}
-
-.top-header {
-    max-width: 1250px;
-    margin: auto;
-    padding: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: 900;
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: #00a8ff;
-}
-
-nav {
-    background: #001f42;
-    padding: 18px 8%;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border-bottom: 3px solid #0075d5;
-}
-
-.hero {
-    background: linear-gradient(115deg, #003c80, #001b3b);
-    color: white;
-    padding: 75px 8%;
-}
-
-.hero-label {
-    color: #73c8ff;
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 6vw, 60px);
-    margin-top: 15px;
-    letter-spacing: -1px;
-}
-
-.container {
-    max-width: 1250px;
-    margin: 50px auto;
-    padding: 0 25px;
-    min-height: 400px;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.section-header h2 {
-    font-size: 30px;
-    color: #002b5c;
-}
-
-.actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-button {
-    border: none;
-    padding: 12px 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-    font-family: inherit;
-}
-
-.primary {
-    background: #0071ce;
-    color: white;
-}
-
-.secondary {
-    background: #e5edf5;
-    color: #002b5c;
-}
-
-button:hover {
-    opacity: 0.85;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: wait;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* RANKINGS */
-
-.table-wrapper {
-    background: white;
-    border: 1px solid #e1e5eb;
-    border-radius: 5px;
-    overflow-x: auto;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.04);
-}
-
-table {
-    width: 100%;
-    min-width: 650px;
-    border-collapse: collapse;
-}
-
-thead {
-    background: #eef2f7;
-}
-
-th {
-    text-align: left;
-    padding: 20px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #53677f;
-}
-
-td {
-    padding: 25px 20px;
-    border-bottom: 1px solid #e8edf2;
-    font-size: 15px;
-}
-
-tbody tr:hover {
-    background: #f4f9ff;
-}
-
-.rank {
-    font-size: 27px;
-    font-weight: 800;
-    color: #002b5c;
-}
-
-.player {
-    font-size: 17px;
-    font-weight: bold;
-    color: #003b7a;
-}
-
-.points {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.player-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.avatar {
-    width: 45px;
-    height: 45px;
-    flex-shrink: 0;
-    background: #e2ebf5;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    color: #003b7a;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-/* ADMIN */
-
-.admin-panel {
-    background: white;
-    padding: 25px;
-    border: 1px solid #dce1e8;
-    margin-bottom: 25px;
-    border-radius: 5px;
-}
-
-.admin-panel h3 {
-    margin-bottom: 20px;
-    color: #002b5c;
-}
-
-.auth-fields {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-input {
-    padding: 12px;
-    border: 1px solid #cbd5df;
-    border-radius: 4px;
-    font: inherit;
-}
-
-.edit-row {
-    display: grid;
-    grid-template-columns: minmax(150px, 1fr) repeat(3, minmax(80px, 130px));
-    gap: 15px;
-    align-items: center;
-    padding: 18px 0;
-    border-bottom: 1px solid #e8edf2;
-}
-
-.edit-row input {
-    width: 100%;
-}
-
-.edit-row label {
-    display: block;
-    font-size: 12px;
-    color: #64788c;
-    margin-bottom: 6px;
-}
-
-.editor-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.status {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #53677f;
-}
-
-footer {
-    background: #001f42;
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
-    margin-top: 100px;
-}
-
-footer h3 {
-    font-size: 24px;
-}
-
-footer p {
-    margin-top: 12px;
-    color: #9cb0c7;
-    font-size: 13px;
-}
-
-@media(max-width:700px) {
-    .edit-row {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .edit-row strong {
-        grid-column: 1/-1;
-    }
-
-    .top-header {
-        padding: 20px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero {
-        padding: 60px 20px;
-    }
-
-    .container {
-        margin-top: 30px;
-        padding: 0 15px;
-    }
-}
+*{box-sizing:border-box}html{color-scheme:light}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f6f8;color:#172b4d}header{background:#002b5c;color:#fff}.top-header{max-width:1250px;margin:auto;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:26px;font-weight:900;letter-spacing:-1px}.logo span{color:#00a8ff}nav{background:#001f42;padding:18px max(20px,8%);color:white;font-size:14px;font-weight:bold;border-bottom:3px solid #0075d5}.hero{background:linear-gradient(115deg,#003c80,#001b3b);color:#fff;padding:75px max(20px,8%)}.hero-label{color:#73c8ff;font-size:13px;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(38px,6vw,60px);margin:15px 0 0;letter-spacing:-1px}.container{max-width:1250px;margin:50px auto;padding:0 25px;min-height:400px}.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:15px;flex-wrap:wrap}.section-header h2{font-size:30px;color:#002b5c;margin:0}.actions{display:flex;gap:10px;flex-wrap:wrap}button{border:0;padding:12px 18px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:13px;font-family:inherit}.primary{background:#0071ce;color:white}.secondary{background:#e5edf5;color:#002b5c}button:hover{filter:brightness(.96)}button:disabled{opacity:.55;cursor:wait}.hidden{display:none!important}.table-wrapper{background:white;border:1px solid #e1e5eb;border-radius:5px;overflow-x:auto;box-shadow:0 5px 25px rgba(0,0,0,.04)}table{width:100%;min-width:650px;border-collapse:collapse}thead{background:#eef2f7}th{text-align:left;padding:20px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:#53677f}td{padding:25px 20px;border-bottom:1px solid #e8edf2;font-size:15px}tbody tr:hover{background:#f4f9ff}.rank{font-size:27px;font-weight:800;color:#002b5c}.player{font-size:17px;font-weight:bold;color:#003b7a}.points{font-size:18px;font-weight:bold}.player-info{display:flex;align-items:center;gap:15px}.avatar{width:45px;height:45px;flex-shrink:0;background:#e2ebf5;border-radius:50%;display:grid;place-items:center;color:#003b7a;font-weight:bold;font-size:13px}.admin-panel{background:white;padding:25px;border:1px solid #dce1e8;margin-bottom:25px;border-radius:5px}.admin-panel h3{margin:0 0 20px;color:#002b5c}.auth-fields{display:flex;gap:10px;flex-wrap:wrap}input,select{padding:12px;border:1px solid #cbd5df;border-radius:4px;font:inherit;min-width:0;background:white;color:#172b4d}.edit-row{display:grid;grid-template-columns:minmax(150px,1fr) repeat(3,minmax(80px,130px));gap:15px;align-items:center;padding:18px 0;border-bottom:1px solid #e8edf2}.edit-row input{width:100%}.edit-row label,.match-grid label{display:block;font-size:12px;color:#64788c;margin-bottom:6px}.editor-actions{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}.status{margin-top:20px;font-size:14px;color:#53677f}.match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.team{background:#f5f8fc;padding:18px;border:1px solid #e1e8f0;border-radius:5px}.team h4{margin:0 0 15px;color:#002b5c}.team select{width:100%;margin-bottom:13px}.scorebox{max-width:160px}.scorebox input{width:100%}.match-hint{font-size:13px;color:#64788c;margin:15px 0 0;line-height:1.5}.winner-preview{font-weight:700;color:#003b7a;margin-top:18px}footer{background:#001f42;color:white;text-align:center;padding:50px 20px;margin-top:100px}footer h3{font-size:24px;margin:0}footer p{margin:12px 0 0;color:#9cb0c7;font-size:13px}@media(max-width:700px){.edit-row{grid-template-columns:repeat(3,minmax(0,1fr))}.edit-row strong{grid-column:1/-1}.match-grid{grid-template-columns:1fr}.top-header{padding:20px}.logo{font-size:20px}.hero{padding:60px 20px}.container{margin-top:30px;padding:0 15px}}
 </style>
 </head>
-
 <body>
-
-<header>
-    <div class="top-header">
-        <div class="logo">
-            PICKLEBALL<span>CLUB</span>
-        </div>
-        <div>2026 SEASON</div>
-    </div>
-</header>
-
+<header><div class="top-header"><div class="logo">PICKLEBALL<span>CLUB</span></div><div>2026 SEASON</div></div></header>
 <nav>Rankings</nav>
-
-<section class="hero">
-    <div class="hero-label">2026 SEASON</div>
-    <h1>Official Rankings</h1>
-</section>
-
+<section class="hero"><div class="hero-label">2026 SEASON</div><h1>Official Rankings</h1></section>
 <main class="container">
+  <div class="section-header"><h2>Club Rankings</h2><div class="actions">
+    <button class="secondary" id="adminButton">Admin Login</button>
+    <button class="primary hidden" id="matchButton">Enter Match</button>
+    <button class="primary hidden" id="editButton">Edit Rankings</button>
+    <button class="secondary hidden" id="logoutButton">Log Out</button>
+  </div></div>
 
-    <div class="section-header">
-        <h2>Club Rankings</h2>
+  <div id="authPanel" class="admin-panel hidden"><h3>Administrator Login</h3>
+    <form id="loginForm" class="auth-fields"><input id="email" type="email" placeholder="Email" autocomplete="username" required><input id="password" type="password" placeholder="Password" autocomplete="current-password" required><button class="primary" type="submit" id="loginButton">Log In</button></form>
+  </div>
 
-        <div class="actions">
-            <button class="secondary" id="adminButton">
-                Admin Login
-            </button>
-
-            <button class="primary hidden" id="editButton">
-                Edit Rankings
-            </button>
-
-            <button class="secondary hidden" id="logoutButton">
-                Log Out
-            </button>
+  <section id="matchPanel" class="admin-panel hidden" aria-label="Enter doubles match">
+    <h3>Enter Doubles Match</h3>
+    <form id="matchForm">
+      <div class="match-grid">
+        <div class="team"><h4>Team 1</h4>
+          <label for="t1p1">Player 1</label><select id="t1p1" required></select>
+          <label for="t1p2">Player 2</label><select id="t1p2" required></select>
+          <div class="scorebox"><label for="t1score">Team 1 score</label><input id="t1score" type="number" min="0" step="1" required placeholder="11"></div>
         </div>
-    </div>
-
-    <!-- LOGIN PANEL -->
-
-    <div id="authPanel" class="admin-panel hidden">
-        <h3>Administrator Login</h3>
-
-        <form id="loginForm" class="auth-fields">
-            <input
-                id="email"
-                type="email"
-                placeholder="Email"
-                autocomplete="username"
-                required
-            >
-
-            <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                autocomplete="current-password"
-                required
-            >
-
-            <button class="primary" type="submit" id="loginButton">
-                Log In
-            </button>
-        </form>
-    </div>
-
-    <!-- ADMIN EDITOR -->
-
-    <div id="editor" class="admin-panel hidden">
-        <h3>Edit Player Rankings</h3>
-
-        <div id="editRows"></div>
-
-        <div class="editor-actions">
-            <button class="primary" id="saveButton">
-                Save Changes
-            </button>
-
-            <button class="secondary" id="cancelButton">
-                Cancel
-            </button>
+        <div class="team"><h4>Team 2</h4>
+          <label for="t2p1">Player 1</label><select id="t2p1" required></select>
+          <label for="t2p2">Player 2</label><select id="t2p2" required></select>
+          <div class="scorebox"><label for="t2score">Team 2 score</label><input id="t2score" type="number" min="0" step="1" required placeholder="8"></div>
         </div>
-    </div>
+      </div>
+      <p class="match-hint">Enter one completed game's final score. Higher score wins. Each winner gets +1 win, and each loser gets +1 loss. Ranking points do not change.</p>
+      <p id="winnerPreview" class="winner-preview" aria-live="polite">Select the players and enter a score.</p>
+      <div class="editor-actions"><button id="submitMatch" class="primary" type="submit">Save Match Result</button><button id="cancelMatch" type="button" class="secondary">Cancel</button></div>
+    </form>
+  </section>
 
-    <!-- RANKINGS TABLE -->
+  <section id="editor" class="admin-panel hidden"><h3>Edit Player Rankings</h3><div id="editRows"></div><div class="editor-actions"><button class="primary" id="saveButton">Save Changes</button><button class="secondary" id="cancelButton">Cancel</button></div></section>
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Win %</th>
-                </tr>
-            </thead>
-
-            <tbody id="rankingsBody"></tbody>
-        </table>
-    </div>
-
-    <p id="status" class="status" role="status"></p>
-
+  <div class="table-wrapper"><table><thead><tr><th>Rank</th><th>Player</th><th>Points</th><th>Wins</th><th>Losses</th><th>Win %</th></tr></thead><tbody id="rankingsBody"></tbody></table></div>
+  <p id="status" class="status" role="status"></p>
 </main>
-
-<footer>
-    <h3>Pickleball Club</h3>
-    <p>Official Rankings — 2026 Season</p>
-    <p>© 2026 Pickleball Club</p>
-</footer>
+<footer><h3>Pickleball Club</h3><p>Official Rankings — 2026 Season</p><p>© 2026 Pickleball Club</p></footer>
 
 <script type="module">
-
-import { createClient } from
-"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-
-/* SUPABASE CONNECTION */
-
-const SUPABASE_URL =
-    "https://iwqidqqwrojottqamyte.supabase.co";
-
-const SUPABASE_KEY =
-    "sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g";
-
-const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const SUPABASE_URL = "https://iwqidqqwrojottqamyte.supabase.co";
+const SUPABASE_KEY = "sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g";
+const supabase = createClient(SUPABASE_URL,SUPABASE_KEY);
 const $ = id => document.getElementById(id);
-
-let isAdmin = false;
 let players = [];
+let isAdmin = false;
+let pendingMatchId = null;
+const status = message => {$("status").textContent=message;};
 
-/* STATUS MESSAGE */
-
-function status(message) {
-    $("status").textContent = message;
+function renderRankings(){
+  const sorted=[...players].sort((a,b)=>b.points-a.points || a.id-b.id);
+  const tbody=$("rankingsBody");tbody.innerHTML="";
+  for(const [index,p] of sorted.entries()){
+    const total=p.wins+p.losses;
+    const percentage=total?((p.wins/total)*100).toFixed(1):"0.0";
+    const tr=document.createElement("tr");
+    const rank=tr.insertCell();rank.className="rank";rank.textContent=index+1;
+    const pc=tr.insertCell(),info=document.createElement("div");info.className="player-info";
+    const avatar=document.createElement("span");avatar.className="avatar";avatar.textContent=p.name.split(" ").map(s=>s[0]).join("");
+    const name=document.createElement("span");name.className="player";name.textContent=p.name;
+    info.append(avatar,name);pc.append(info);
+    const points=tr.insertCell();points.className="points";points.textContent=p.points.toLocaleString();
+    tr.insertCell().textContent=p.wins;tr.insertCell().textContent=p.losses;tr.insertCell().textContent=percentage+"%";
+    tbody.append(tr);
+  }
 }
-
-/* DISPLAY RANKINGS */
-
-function renderRankings() {
-
-    const sorted = [...players].sort(
-        (a, b) => b.points - a.points || a.id - b.id
-    );
-
-    const tbody = $("rankingsBody");
-    tbody.innerHTML = "";
-
-    sorted.forEach((p, index) => {
-
-        const total = p.wins + p.losses;
-
-        const percentage = total
-            ? ((p.wins / total) * 100).toFixed(1)
-            : "0.0";
-
-        const initials = p.name
-            .split(" ")
-            .map(word => word[0])
-            .join("");
-
-        const tr = document.createElement("tr");
-
-        const rank = tr.insertCell();
-        rank.className = "rank";
-        rank.textContent = index + 1;
-
-        const playerCell = tr.insertCell();
-
-        const info = document.createElement("div");
-        info.className = "player-info";
-
-        const avatar = document.createElement("span");
-        avatar.className = "avatar";
-        avatar.textContent = initials;
-
-        const name = document.createElement("span");
-        name.className = "player";
-        name.textContent = p.name;
-
-        info.append(avatar, name);
-        playerCell.append(info);
-
-        const pointsCell = tr.insertCell();
-        pointsCell.className = "points";
-        pointsCell.textContent = p.points.toLocaleString();
-
-        tr.insertCell().textContent = p.wins;
-        tr.insertCell().textContent = p.losses;
-        tr.insertCell().textContent = percentage + "%";
-
-        tbody.appendChild(tr);
-    });
+async function loadRankings(){
+  const {data,error}=await supabase.from("players").select("id,name,points,wins,losses");
+  if(error){status("Could not load rankings: "+error.message);return false;}
+  players=data||[];renderRankings();status("Rankings updated.");return true;
 }
-
-/* LOAD RANKINGS FROM SUPABASE */
-
-async function loadRankings() {
-
-    const { data, error } = await supabase
-        .from("players")
-        .select("id,name,points,wins,losses");
-
-    if (error) {
-        status("Could not load rankings: " + error.message);
-        return;
-    }
-
-    players = data || [];
-
-    renderRankings();
-
-    status("Rankings updated.");
+async function checkAdmin(){
+  const {data:{user},error:authError}=await supabase.auth.getUser();
+  isAdmin=false;
+  if(!authError && user){
+    const {data,error}=await supabase.from("club_admins").select("user_id").eq("user_id",user.id).maybeSingle();
+    isAdmin=!error && !!data;
+  }
+  $("adminButton").classList.toggle("hidden",isAdmin);
+  $("matchButton").classList.toggle("hidden",!isAdmin);
+  $("editButton").classList.toggle("hidden",!isAdmin);
+  $("logoutButton").classList.toggle("hidden",!isAdmin);
+  if(!isAdmin){$("editor").classList.add("hidden");$("matchPanel").classList.add("hidden");}
+  return isAdmin;
 }
+$("adminButton").onclick=()=>$("authPanel").classList.toggle("hidden");
+$("loginForm").onsubmit=async event=>{
+  event.preventDefault();$("loginButton").disabled=true;status("Signing in...");
+  const {error}=await supabase.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+  $("loginButton").disabled=false;
+  if(error){status("Login failed: "+error.message);return;}
+  const authorized=await checkAdmin();$("password").value="";$("authPanel").classList.add("hidden");
+  status(authorized?"Administrator logged in successfully.":"This account is not authorized to edit rankings.");
+};
+$("logoutButton").onclick=async()=>{
+  const {error}=await supabase.auth.signOut();
+  if(error){status("Logout failed: "+error.message);return;}
+  await checkAdmin();status("Logged out successfully.");
+};
 
-/* CHECK ADMIN PERMISSIONS */
-
-async function checkAdmin() {
-
-    const { data: { user }, error: authError } =
-        await supabase.auth.getUser();
-
-    isAdmin = false;
-
-    if (!authError && user) {
-
-        const { data, error } = await supabase
-            .from("club_admins")
-            .select("user_id")
-            .eq("user_id", user.id)
-            .maybeSingle();
-
-        isAdmin = !error && !!data;
+function populateMatchPlayers(){
+  for(const id of ["t1p1","t1p2","t2p1","t2p2"]){
+    const select=$(id);select.innerHTML="";
+    const placeholder=document.createElement("option");placeholder.value="";placeholder.textContent="Select player";select.append(placeholder);
+    for(const p of [...players].sort((a,b)=>a.id-b.id)){
+      const option=document.createElement("option");option.value=p.id;option.textContent=p.name;select.append(option);
     }
-
-    $("adminButton").classList.toggle(
-        "hidden", isAdmin
-    );
-
-    $("editButton").classList.toggle(
-        "hidden", !isAdmin
-    );
-
-    $("logoutButton").classList.toggle(
-        "hidden", !isAdmin
-    );
-
-    if (!isAdmin) {
-        $("editor").classList.add("hidden");
-    }
-
-    return isAdmin;
+  }
 }
-
-/* ADMIN LOGIN */
-
-$("adminButton").onclick = () => {
-    $("authPanel").classList.toggle("hidden");
+function parseScore(value){
+  if(value.trim()==="")return null;
+  const num=Number(value);
+  return Number.isSafeInteger(num) && num>=0 && num<=2147483647 ? num : null;
+}
+function matchValues(){
+  const ids=["t1p1","t1p2","t2p1","t2p2"].map(id=>Number($(id).value));
+  const s1=parseScore($("t1score").value),s2=parseScore($("t2score").value);
+  return {ids,s1,s2};
+}
+function updateWinnerPreview(){
+  const {ids,s1,s2}=matchValues();
+  if(ids.some(id=>!id) || new Set(ids).size!==4){$("winnerPreview").textContent="Choose four different players.";return;}
+  if(s1===null || s2===null){$("winnerPreview").textContent="Enter both team scores.";return;}
+  if(s1===s2){$("winnerPreview").textContent="Scores cannot be tied.";return;}
+  const winnerIds=s1>s2?ids.slice(0,2):ids.slice(2,4);
+  const names=winnerIds.map(id=>players.find(p=>p.id===id)?.name||"Unknown");
+  $("winnerPreview").textContent="Winner: "+names.join(" & ")+" ("+Math.max(s1,s2)+"–"+Math.min(s1,s2)+")";
+}
+$("matchButton").onclick=()=>{
+  if(!isAdmin)return;
+  $("editor").classList.add("hidden");
+  populateMatchPlayers();$("matchForm").reset();pendingMatchId=null;
+  updateWinnerPreview();$("matchPanel").classList.remove("hidden");
+};
+$("cancelMatch").onclick=()=>{$("matchPanel").classList.add("hidden");pendingMatchId=null;};
+for(const id of ["t1p1","t1p2","t2p1","t2p2","t1score","t2score"]){
+  $(id).addEventListener("input",()=>{pendingMatchId=null;updateWinnerPreview();});
+}
+$("matchForm").onsubmit=async event=>{
+  event.preventDefault();if(!isAdmin)return;
+  const {ids,s1,s2}=matchValues();
+  if(ids.some(id=>!id)||new Set(ids).size!==4){status("Select four different players.");return;}
+  if(s1===null||s2===null||s1===s2){status("Enter two valid scores that are not tied.");return;}
+  if(!window.confirm("Save this doubles result and update all four players' records?"))return;
+  if(!pendingMatchId)pendingMatchId=crypto.randomUUID();
+  $("submitMatch").disabled=true;status("Saving match...");
+  const {error}=await supabase.rpc("record_doubles_match",{
+    p_request_id:pendingMatchId,
+    p_team1_player1:ids[0],p_team1_player2:ids[1],
+    p_team2_player1:ids[2],p_team2_player2:ids[3],
+    p_team1_score:s1,p_team2_score:s2
+  });
+  $("submitMatch").disabled=false;
+  if(error){status("Could not save match: "+error.message);return;}
+  // Do not reset request ID until successful save; duplicate network retries are safe.
+  pendingMatchId=null;$("matchPanel").classList.add("hidden");
+  if(await loadRankings())status("Match saved. Winners received +1 win; losers received +1 loss.");
 };
 
-$("loginForm").onsubmit = async event => {
-
-    event.preventDefault();
-
-    const email = $("email").value.trim();
-    const password = $("password").value;
-
-    const button = $("loginButton");
-    button.disabled = true;
-
-    status("Signing in...");
-
-    const { error } = await supabase.auth
-        .signInWithPassword({
-            email,
-            password
-        });
-
-    button.disabled = false;
-
-    if (error) {
-        status("Login failed: " + error.message);
-        return;
+$("editButton").onclick=()=>{
+  if(!isAdmin)return;
+  $("matchPanel").classList.add("hidden");
+  const container=$("editRows");container.innerHTML="";
+  for(const p of [...players].sort((a,b)=>b.points-a.points||a.id-b.id)){
+    const row=document.createElement("div");row.className="edit-row";row.dataset.id=p.id;
+    const name=document.createElement("strong");name.textContent=p.name;row.append(name);
+    for(const field of ["points","wins","losses"]){
+      const wrapper=document.createElement("div"),label=document.createElement("label");
+      label.textContent=field[0].toUpperCase()+field.slice(1);
+      const input=document.createElement("input");input.type="number";input.min="0";input.step="1";input.max="2147483647";input.value=p[field];input.dataset.field=field;
+      label.append(input);wrapper.append(label);row.append(wrapper);
     }
-
-    const authorized = await checkAdmin();
-
-    $("password").value = "";
-    $("authPanel").classList.add("hidden");
-
-    status(
-        authorized
-            ? "Administrator logged in successfully."
-            : "This account is not authorized to edit rankings."
-    );
+    container.append(row);
+  }
+  $("editor").classList.remove("hidden");
 };
-
-/* LOGOUT */
-
-$("logoutButton").onclick = async () => {
-
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-        status("Logout failed: " + error.message);
-        return;
+$("cancelButton").onclick=()=>$("editor").classList.add("hidden");
+$("saveButton").onclick=async()=>{
+  if(!isAdmin)return;
+  const updates=[];
+  for(const row of document.querySelectorAll(".edit-row")){
+    const updated={id:Number(row.dataset.id)};
+    for(const input of row.querySelectorAll("input")){
+      const value=Number(input.value);
+      if(input.value.trim()===""||!Number.isSafeInteger(value)||value<0||value>2147483647){status("Enter valid nonnegative whole numbers.");return;}
+      updated[input.dataset.field]=value;
     }
-
-    await checkAdmin();
-
-    status("Logged out successfully.");
+    updates.push(updated);
+  }
+  $("saveButton").disabled=true;status("Saving rankings...");
+  const {error}=await supabase.rpc("update_rankings",{updates});
+  $("saveButton").disabled=false;
+  if(error){status("Save failed: "+error.message);return;}
+  $("editor").classList.add("hidden");await loadRankings();
 };
-
-/* OPEN RANKINGS EDITOR */
-
-$("editButton").onclick = () => {
-
-    if (!isAdmin) return;
-
-    const container = $("editRows");
-
-    container.innerHTML = "";
-
-    const sorted = [...players].sort(
-        (a, b) => b.points - a.points || a.id - b.id
-    );
-
-    sorted.forEach(player => {
-
-        const row = document.createElement("div");
-
-        row.className = "edit-row";
-        row.dataset.id = player.id;
-
-        const name = document.createElement("strong");
-        name.textContent = player.name;
-
-        row.appendChild(name);
-
-        ["points", "wins", "losses"].forEach(field => {
-
-            const wrapper = document.createElement("div");
-
-            const label = document.createElement("label");
-
-            label.textContent =
-                field.charAt(0).toUpperCase() +
-                field.slice(1);
-
-            const input = document.createElement("input");
-
-            input.type = "number";
-            input.min = "0";
-            input.step = "1";
-            input.value = player[field];
-            input.dataset.field = field;
-
-            label.appendChild(input);
-            wrapper.appendChild(label);
-
-            row.appendChild(wrapper);
-        });
-
-        container.appendChild(row);
-    });
-
-    $("editor").classList.remove("hidden");
-};
-
-/* CANCEL EDITING */
-
-$("cancelButton").onclick = () => {
-    $("editor").classList.add("hidden");
-};
-
-/* SAVE RANKINGS */
-
-$("saveButton").onclick = async () => {
-
-    if (!isAdmin) {
-        status("Administrator access required.");
-        return;
-    }
-
-    const updates = [];
-
-    for (const row of document.querySelectorAll(".edit-row")) {
-
-        const updated = {
-            id: Number(row.dataset.id)
-        };
-
-        for (const input of row.querySelectorAll("input")) {
-
-            const value = Number(input.value);
-
-            if (
-                input.value.trim() === "" ||
-                !Number.isSafeInteger(value) ||
-                value < 0 ||
-                value > 2147483647
-            ) {
-                status("Enter valid nonnegative whole numbers.");
-                return;
-            }
-
-            updated[input.dataset.field] = value;
-        }
-
-        updates.push(updated);
-    }
-
-    const button = $("saveButton");
-    button.disabled = true;
-
-    status("Saving rankings...");
-
-    const { error } = await supabase.rpc(
-        "update_rankings",
-        { updates }
-    );
-
-    button.disabled = false;
-
-    if (error) {
-        status("Save failed: " + error.message);
-        return;
-    }
-
-    $("editor").classList.add("hidden");
-
-    await loadRankings();
-};
-
-/* INITIALIZE WEBSITE */
-
-renderRankings();
-
-await loadRankings();
-await checkAdmin();
-
+await loadRankings();await checkAdmin();
 </script>
-
 </body>
 </html>
