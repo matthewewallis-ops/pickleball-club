@@ -25,6 +25,7 @@ header { background: #002b5c; color: white; }
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
 .logo {
@@ -84,7 +85,7 @@ nav {
     margin: 0;
 }
 
-.actions {
+.actions, .editor-actions, .auth-fields {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
@@ -102,11 +103,13 @@ button {
 
 .primary { background: #0071ce; color: white; }
 .secondary { background: #e5edf5; color: #002b5c; }
+
 button:hover { filter: brightness(.96); }
 button:disabled { opacity: .55; cursor: wait; }
+
 .hidden { display: none !important; }
 
-/* RANKINGS TABLE */
+/* RANKINGS */
 
 .table-wrapper {
     background: white;
@@ -151,7 +154,10 @@ tbody tr:hover { background: #f4f9ff; }
     color: #003b7a;
 }
 
-.points { font-size: 18px; font-weight: bold; }
+.points {
+    font-size: 18px;
+    font-weight: bold;
+}
 
 .player-info {
     display: flex;
@@ -187,12 +193,6 @@ tbody tr:hover { background: #f4f9ff; }
     color: #002b5c;
 }
 
-.auth-fields {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
 input, select {
     padding: 12px;
     border: 1px solid #cbd5df;
@@ -201,6 +201,13 @@ input, select {
     min-width: 0;
     background: white;
     color: #172b4d;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: #64788c;
+    margin-bottom: 6px;
 }
 
 .edit-row {
@@ -215,21 +222,7 @@ input, select {
 
 .edit-row input { width: 100%; }
 
-.edit-row label,
-.match-grid label,
-.format-row label {
-    display: block;
-    font-size: 12px;
-    color: #64788c;
-    margin-bottom: 6px;
-}
-
-.editor-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 25px;
-    flex-wrap: wrap;
-}
+.editor-actions { margin-top: 25px; }
 
 .status {
     margin-top: 20px;
@@ -237,16 +230,16 @@ input, select {
     color: #53677f;
 }
 
-/* MATCH ENTRY */
+/* MATCH INPUT */
 
 .format-row {
-    display: grid;
-    grid-template-columns: repeat(2,minmax(0,220px));
-    gap: 16px;
-    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
 }
 
-.format-row select { width: 100%; }
+.format-row select { min-width: 170px; }
 
 .match-grid {
     display: grid;
@@ -256,13 +249,13 @@ input, select {
 
 .team {
     background: #f5f8fc;
-    padding: 18px;
+    padding: 20px;
     border: 1px solid #e1e8f0;
     border-radius: 5px;
 }
 
 .team h4 {
-    margin: 0 0 15px;
+    margin: 0 0 17px;
     color: #002b5c;
 }
 
@@ -271,51 +264,47 @@ input, select {
     margin-bottom: 13px;
 }
 
-.game-heading {
+.score-section {
+    margin-top: 25px;
+    max-width: 500px;
+}
+
+.score-section h4 {
     color: #002b5c;
-    margin: 25px 0 6px;
+    margin: 0 0 10px;
 }
 
-.game-rows {
-    max-width: 570px;
-    margin-top: 16px;
-}
-
-.game-row {
+.score-grid {
     display: grid;
-    grid-template-columns: 100px minmax(0,1fr)
-        minmax(0,1fr);
-    gap: 12px;
-    align-items: end;
-    margin: 10px 0;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 16px;
 }
 
-.game-row label {
-    font-size: 12px;
-    color: #64788c;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.game-row input { width: 100%; }
-
-.game-row strong {
-    align-self: center;
-    font-size: 14px;
+.score-grid input {
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .match-hint {
     font-size: 13px;
     color: #64788c;
-    margin: 15px 0 0;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .winner-preview {
-    font-weight: 700;
+    background: #eef5ff;
+    border-left: 4px solid #0071ce;
+    padding: 16px;
+    margin-top: 22px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.6;
     color: #003b7a;
-    margin-top: 18px;
 }
+
+/* FOOTER */
 
 footer {
     background: #001f42;
@@ -325,25 +314,21 @@ footer {
     margin-top: 100px;
 }
 
-footer h3 { font-size: 24px; margin: 0; }
+footer h3 { margin: 0; font-size: 24px; }
 footer p { color: #9cb0c7; font-size: 13px; }
 
 @media(max-width:700px) {
+    .match-grid { grid-template-columns: 1fr; }
+
     .edit-row {
         grid-template-columns: repeat(3,minmax(0,1fr));
     }
+
     .edit-row strong { grid-column: 1/-1; }
-    .match-grid { grid-template-columns: 1fr; }
-    .format-row { grid-template-columns: 1fr 1fr; }
-    .game-row {
-        grid-template-columns: 65px minmax(0,1fr)
-            minmax(0,1fr);
-        gap: 7px;
-    }
     .top-header { padding: 20px; }
     .logo { font-size: 20px; }
     .hero { padding: 60px 20px; }
-    .container { margin: 30px auto; padding: 0 15px; }
+    .container { padding: 0 15px; margin-top: 30px; }
 }
 </style>
 </head>
@@ -368,229 +353,279 @@ footer p { color: #9cb0c7; font-size: 13px; }
 
 <main class="container">
 
-    <div class="section-header">
-        <h2>Club Rankings</h2>
-        <div class="actions">
-            <button class="secondary" id="adminButton">
-                Admin Login
-            </button>
-            <button class="primary hidden" id="matchButton">
-                Enter Match
-            </button>
-            <button class="primary hidden" id="registerButton">
-                Register Player
-            </button>
-            <button class="primary hidden" id="editButton">
-                Edit Rankings
-            </button>
-            <button class="secondary hidden" id="logoutButton">
-                Log Out
-            </button>
+<div class="section-header">
+    <h2>Club Rankings</h2>
+
+    <div class="actions">
+        <button class="secondary" id="adminButton">
+            Admin Login
+        </button>
+
+        <button class="primary hidden" id="matchButton">
+            Enter Match
+        </button>
+
+        <button class="primary hidden" id="registerButton">
+            Register Player
+        </button>
+
+        <button class="primary hidden" id="editButton">
+            Edit Rankings
+        </button>
+
+        <button class="secondary hidden" id="logoutButton">
+            Log Out
+        </button>
+    </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+
+<section id="authPanel" class="admin-panel hidden">
+
+    <h3>Administrator Login</h3>
+
+    <form id="loginForm" class="auth-fields">
+
+        <input id="email" type="email"
+            placeholder="Email"
+            autocomplete="username" required>
+
+        <input id="password" type="password"
+            placeholder="Password"
+            autocomplete="current-password" required>
+
+        <button id="loginButton" class="primary"
+            type="submit">Log In</button>
+
+    </form>
+</section>
+
+<!-- ENTER MATCH -->
+
+<section id="matchPanel" class="admin-panel hidden">
+
+    <h3>Enter Doubles Match</h3>
+
+    <form id="matchForm">
+
+        <div class="format-row">
+
+            <div>
+                <label for="bestOf">Match Format</label>
+
+                <select id="bestOf">
+                    <option value="1">Single Game</option>
+                    <option value="3">Best of 3</option>
+                    <option value="5">Best of 5</option>
+                </select>
+            </div>
+
+            <div id="targetContainer">
+                <label for="gameTarget">
+                    Play To
+                </label>
+
+                <select id="gameTarget">
+                    <option value="7">7 Points</option>
+                    <option value="11" selected>
+                        11 Points
+                    </option>
+                </select>
+            </div>
+
         </div>
-    </div>
 
-    <!-- ADMIN LOGIN -->
+        <div class="match-grid">
 
-    <div id="authPanel" class="admin-panel hidden">
-        <h3>Administrator Login</h3>
-        <form id="loginForm" class="auth-fields">
-            <input id="email" type="email"
-                placeholder="Email"
-                autocomplete="username" required>
-            <input id="password" type="password"
-                placeholder="Password"
-                autocomplete="current-password" required>
-            <button class="primary" type="submit"
-                id="loginButton">Log In</button>
-        </form>
-    </div>
+            <div class="team">
 
-    <!-- ENTER MATCH -->
+                <h4>Team 1</h4>
 
-    <section id="matchPanel" class="admin-panel hidden">
+                <label for="t1p1">Player 1</label>
+                <select id="t1p1" required></select>
 
-        <h3>Enter Doubles Match</h3>
+                <label for="t1p2">Player 2</label>
+                <select id="t1p2" required></select>
 
-        <form id="matchForm">
+            </div>
 
-            <div class="format-row">
+            <div class="team">
+
+                <h4>Team 2</h4>
+
+                <label for="t2p1">Player 1</label>
+                <select id="t2p1" required></select>
+
+                <label for="t2p2">Player 2</label>
+                <select id="t2p2" required></select>
+
+            </div>
+
+        </div>
+
+        <div class="score-section">
+
+            <h4 id="scoreHeading">Final Game Score</h4>
+
+            <p class="match-hint" id="scoreInstructions">
+                Enter the final score of the game.
+            </p>
+
+            <div class="score-grid">
+
                 <div>
-                    <label for="gameTarget">
-                        Play each game to
+                    <label for="team1Score">
+                        Team 1
                     </label>
-                    <select id="gameTarget">
-                        <option value="7">7 points</option>
-                        <option value="11" selected>
-                            11 points
-                        </option>
-                    </select>
+
+                    <input
+                        id="team1Score"
+                        type="number"
+                        min="0"
+                        max="999"
+                        step="1"
+                        placeholder="11"
+                        required>
                 </div>
 
                 <div>
-                    <label for="bestOf">Match format</label>
-                    <select id="bestOf">
-                        <option value="1">Single game</option>
-                        <option value="3">Best of 3</option>
-                        <option value="5">Best of 5</option>
-                    </select>
-                </div>
-            </div>
+                    <label for="team2Score">
+                        Team 2
+                    </label>
 
-            <div class="match-grid">
-
-                <div class="team">
-                    <h4>Team 1</h4>
-                    <label for="t1p1">Player 1</label>
-                    <select id="t1p1" required></select>
-                    <label for="t1p2">Player 2</label>
-                    <select id="t1p2" required></select>
-                </div>
-
-                <div class="team">
-                    <h4>Team 2</h4>
-                    <label for="t2p1">Player 1</label>
-                    <select id="t2p1" required></select>
-                    <label for="t2p2">Player 2</label>
-                    <select id="t2p2" required></select>
+                    <input
+                        id="team2Score"
+                        type="number"
+                        min="0"
+                        max="999"
+                        step="1"
+                        placeholder="8"
+                        required>
                 </div>
 
             </div>
 
-            <h4 class="game-heading">Game Scores</h4>
+        </div>
 
-            <p class="match-hint">
-                Enter each completed game's final score.
-                Leave unplayed games blank. Games must
-                reach 7 or 11 and be won by two points.
-            </p>
-
-            <div id="gameRows" class="game-rows"></div>
-
-            <p id="winnerPreview" class="winner-preview">
-                Enter match details.
-            </p>
-
-            <p class="match-hint">
-                Each completed match counts as one win
-                or loss. Longer formats have more Elo
-                points at stake.
-            </p>
-
-            <div class="editor-actions">
-                <button id="submitMatch" class="primary"
-                    type="submit">
-                    Save Match Result
-                </button>
-                <button id="cancelMatch" class="secondary"
-                    type="button">
-                    Cancel
-                </button>
-            </div>
-
-        </form>
-
-    </section>
-
-    <!-- REGISTER PLAYER -->
-
-    <section id="registerPanel" class="admin-panel hidden">
-
-        <h3>Register New Player</h3>
-
-        <form id="registerForm" class="auth-fields">
-
-            <label for="newPlayerName"
-                style="align-self:center">
-                Player Name
-            </label>
-
-            <input id="newPlayerName" type="text"
-                placeholder="Full name"
-                maxlength="80" minlength="2"
-                autocomplete="off" required>
-
-            <button class="primary" type="submit"
-                id="registerSubmit">
-                Add Player
-            </button>
-
-            <button class="secondary" type="button"
-                id="cancelRegister">
-                Cancel
-            </button>
-
-        </form>
-
-        <p class="match-hint">
-            Every new player starts with 1,500 Elo
-            points, 0 wins, and 0 losses.
-        </p>
-
-    </section>
-
-    <!-- EDIT RANKINGS -->
-
-    <section id="editor" class="admin-panel hidden">
-
-        <h3>Edit Player Rankings</h3>
-
-        <div id="editRows"></div>
+        <div id="winnerPreview" class="winner-preview">
+            Select players and enter the result.
+        </div>
 
         <div class="editor-actions">
-            <button class="primary" id="saveButton">
-                Save Changes
+
+            <button class="primary" id="submitMatch"
+                type="submit">
+                Save Match Result
             </button>
-            <button class="secondary" id="cancelButton">
+
+            <button class="secondary" id="cancelMatch"
+                type="button">
                 Cancel
             </button>
+
         </div>
 
-    </section>
+    </form>
 
-    <!-- LEADERBOARD -->
+</section>
 
-    <div class="table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Points</th>
-                    <th>Wins</th>
-                    <th>Losses</th>
-                    <th>Win %</th>
-                </tr>
-            </thead>
-            <tbody id="rankingsBody"></tbody>
-        </table>
+<!-- REGISTER PLAYER -->
+
+<section id="registerPanel" class="admin-panel hidden">
+
+    <h3>Register New Player</h3>
+
+    <form id="registerForm" class="auth-fields">
+
+        <input id="newPlayerName"
+            type="text"
+            placeholder="Full Name"
+            minlength="2"
+            maxlength="80"
+            required>
+
+        <button class="primary" id="registerSubmit"
+            type="submit">
+            Add Player
+        </button>
+
+        <button class="secondary" id="cancelRegister"
+            type="button">
+            Cancel
+        </button>
+
+    </form>
+
+    <p class="match-hint">
+        New players start with 1,500 Elo points,
+        0 wins, and 0 losses.
+    </p>
+
+</section>
+
+<!-- EDIT RANKINGS -->
+
+<section id="editor" class="admin-panel hidden">
+
+    <h3>Edit Player Rankings</h3>
+
+    <div id="editRows"></div>
+
+    <div class="editor-actions">
+
+        <button class="primary" id="saveButton">
+            Save Changes
+        </button>
+
+        <button class="secondary" id="cancelButton">
+            Cancel
+        </button>
+
     </div>
 
-    <p id="status" class="status" role="status"></p>
+</section>
+
+<!-- LEADERBOARD -->
+
+<div class="table-wrapper">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Points</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win %</th>
+            </tr>
+        </thead>
+
+        <tbody id="rankingsBody"></tbody>
+
+    </table>
+
+</div>
+
+<p class="status" id="status" role="status"></p>
 
 </main>
 
 <footer>
     <h3>Pickleball Club</h3>
     <p>Official Rankings — 2026 Season</p>
-    <p>© 2026 Pickleball Club</p>
 </footer>
 
 <script type="module">
 
-import { createClient } from
+import {createClient} from
 "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-/* SUPABASE CONNECTION */
-
-const SUPABASE_URL =
-    "https://iwqidqqwrojottqamyte.supabase.co";
-
-const SUPABASE_KEY =
-    "sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g";
-
 const supabase = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+    "https://iwqidqqwrojottqamyte.supabase.co",
+    "sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g"
 );
 
 const $ = id => document.getElementById(id);
@@ -603,40 +638,38 @@ function status(message) {
     $("status").textContent = message;
 }
 
-/* DISPLAY RANKINGS */
+function sortedPlayers() {
+    return [...players].sort(
+        (a,b) => b.points-a.points || a.id-b.id
+    );
+}
+
+/* RANKINGS */
 
 function renderRankings() {
 
-    const sorted = [...players].sort(
-        (a,b) => b.points - a.points || a.id - b.id
-    );
-
     const tbody = $("rankingsBody");
-    tbody.innerHTML = "";
+    tbody.replaceChildren();
 
-    sorted.forEach((p,index) => {
-
-        const total = p.wins + p.losses;
-        const percentage = total
-            ? ((p.wins / total)*100).toFixed(1)
-            : "0.0";
+    sortedPlayers().forEach((p,index) => {
 
         const tr = document.createElement("tr");
 
         const rank = tr.insertCell();
         rank.className = "rank";
-        rank.textContent = index + 1;
+        rank.textContent = index+1;
 
-        const pc = tr.insertCell();
+        const cell = tr.insertCell();
 
         const info = document.createElement("div");
         info.className = "player-info";
 
         const avatar = document.createElement("span");
         avatar.className = "avatar";
+
         avatar.textContent = p.name
             .split(" ")
-            .map(s => s[0])
+            .map(part=>part[0])
             .join("");
 
         const name = document.createElement("span");
@@ -644,7 +677,7 @@ function renderRankings() {
         name.textContent = p.name;
 
         info.append(avatar,name);
-        pc.append(info);
+        cell.append(info);
 
         const points = tr.insertCell();
         points.className = "points";
@@ -652,13 +685,16 @@ function renderRankings() {
 
         tr.insertCell().textContent = p.wins;
         tr.insertCell().textContent = p.losses;
-        tr.insertCell().textContent = percentage + "%";
+
+        const matches = p.wins+p.losses;
+
+        tr.insertCell().textContent = matches
+            ? (100*p.wins/matches).toFixed(1)+"%"
+            : "0.0%";
 
         tbody.append(tr);
     });
 }
-
-/* LOAD ONLINE RANKINGS */
 
 async function loadRankings() {
 
@@ -673,23 +709,22 @@ async function loadRankings() {
 
     players = data || [];
     renderRankings();
-    status("Rankings updated.");
 
+    status("Rankings updated.");
     return true;
 }
 
-/* ADMIN AUTHORIZATION */
+/* ADMIN LOGIN */
 
 async function checkAdmin() {
 
-    const {
-        data:{user},
-        error:authError
-    } = await supabase.auth.getUser();
+    const {data:{user}} =
+        await supabase.auth.getUser();
 
     isAdmin = false;
 
-    if(!authError && user) {
+    if(user) {
+
         const {data,error} = await supabase
             .from("club_admins")
             .select("user_id")
@@ -698,6 +733,10 @@ async function checkAdmin() {
 
         isAdmin = !error && !!data;
     }
+
+    $("adminButton").classList.toggle(
+        "hidden",isAdmin
+    );
 
     for(const id of [
         "matchButton",
@@ -708,20 +747,21 @@ async function checkAdmin() {
         $(id).classList.toggle("hidden",!isAdmin);
     }
 
-    $("adminButton").classList.toggle(
-        "hidden",isAdmin
-    );
-
-    if(!isAdmin) {
-        $("editor").classList.add("hidden");
-        $("matchPanel").classList.add("hidden");
-        $("registerPanel").classList.add("hidden");
-    }
+    if(!isAdmin) closePanels();
 
     return isAdmin;
 }
 
-/* LOGIN */
+function closePanels() {
+    for(const id of [
+        "authPanel",
+        "matchPanel",
+        "registerPanel",
+        "editor"
+    ]) {
+        $(id).classList.add("hidden");
+    }
+}
 
 $("adminButton").onclick = () => {
     $("authPanel").classList.toggle("hidden");
@@ -747,57 +787,54 @@ $("loginForm").onsubmit = async event => {
         return;
     }
 
+    $("password").value = "";
+    closePanels();
+
     const authorized = await checkAdmin();
 
-    $("password").value = "";
-    $("authPanel").classList.add("hidden");
-
     status(authorized
-        ? "Administrator logged in successfully."
-        : "Account not authorized to edit rankings."
+        ? "Administrator logged in."
+        : "This account is not authorized."
     );
 };
-
-/* LOGOUT */
 
 $("logoutButton").onclick = async () => {
 
     const {error} = await supabase.auth.signOut();
 
     if(error) {
-        status("Logout failed: "+error.message);
+        status(error.message);
         return;
     }
 
     await checkAdmin();
-    status("Logged out successfully.");
+    status("Logged out.");
 };
 
-/* DOUBLES MATCH PLAYER SELECTION */
+/* MATCH FORM */
 
-function populateMatchPlayers() {
+function populatePlayers() {
+
+    const ordered = [...players].sort(
+        (a,b) => a.id-b.id
+    );
 
     for(const id of [
         "t1p1","t1p2","t2p1","t2p2"
     ]) {
 
         const select = $(id);
-        select.innerHTML = "";
+        select.replaceChildren();
 
-        const placeholder =
-            document.createElement("option");
+        const blank = document.createElement("option");
+        blank.value = "";
+        blank.textContent = "Select Player";
 
-        placeholder.value = "";
-        placeholder.textContent = "Select player";
+        select.append(blank);
 
-        select.append(placeholder);
+        for(const p of ordered) {
 
-        for(const p of [...players].sort(
-            (a,b) => a.id-b.id
-        )) {
-
-            const option =
-                document.createElement("option");
+            const option = document.createElement("option");
 
             option.value = p.id;
             option.textContent = p.name;
@@ -807,303 +844,217 @@ function populateMatchPlayers() {
     }
 }
 
-/* WEIGHTED ELO */
-
 function eloK(target,bestOf) {
 
-    const factors = {
-        1:{7:16,11:24},
-        3:{7:32,11:40},
-        5:{7:48,11:60}
-    };
+    if(bestOf===5) return 60;
+    if(bestOf===3) return 40;
 
-    return factors[bestOf][target];
+    return target===7 ? 16 : 24;
 }
 
-function expectedEloChange(
-    ids,team1Wins,target,bestOf
-) {
+function calculateElo(ids,team1Wins,target,bestOf) {
 
     const ratings = ids.map(id =>
-        players.find(p => p.id===id)?.points
+        players.find(p=>p.id===id)?.points
     );
 
-    if(ratings.some(r => !Number.isFinite(r))) {
+    if(ratings.some(r=>!Number.isFinite(r))) {
         return null;
     }
 
-    const r1 = (ratings[0]+ratings[1])/2;
-    const r2 = (ratings[2]+ratings[3])/2;
+    const team1 = (ratings[0]+ratings[1])/2;
+    const team2 = (ratings[2]+ratings[3])/2;
 
-    const expected =
-        1/(1+Math.pow(10,(r2-r1)/400));
+    const expected = 1/(
+        1+Math.pow(10,(team2-team1)/400)
+    );
 
     return Math.round(
-        eloK(target,bestOf) *
+        eloK(target,bestOf)*
         ((team1Wins?1:0)-expected)
     );
 }
 
-function signed(n) {
-    return (n>=0?"+":"")+n;
+function signed(number) {
+    return (number>=0?"+":"")+number;
 }
 
-/* GAME SCORE INPUTS */
+function updateFormat() {
 
-function renderGameInputs() {
+    const bestOf = Number($("bestOf").value);
+    const single = bestOf===1;
 
-    const maxGames = Number($("bestOf").value);
-    const target = Number($("gameTarget").value);
+    $("targetContainer").classList.toggle(
+        "hidden",!single
+    );
 
-    const area = $("gameRows");
-    area.replaceChildren();
+    $("scoreHeading").textContent = single
+        ? "Final Game Score"
+        : "Final Series Score";
 
-    for(let n=1;n<=maxGames;n++) {
+    $("scoreInstructions").textContent = single
+        ? "Enter the final score of the game. Win by two."
+        : bestOf===3
+            ? "Enter sets won: 2–0 or 2–1, either way."
+            : "Enter sets won: 3–0, 3–1, or 3–2, either way.";
 
-        const row = document.createElement("div");
-        row.className = "game-row";
+    $("team1Score").placeholder = single
+        ? $("gameTarget").value
+        : String((bestOf+1)/2);
 
-        const heading = document.createElement("strong");
-        heading.textContent = "Game "+n;
+    $("team2Score").placeholder = single
+        ? "8"
+        : "1";
 
-        row.append(heading);
+    $("team1Score").value = "";
+    $("team2Score").value = "";
 
-        for(const team of [1,2]) {
-
-            const label =
-                document.createElement("label");
-
-            label.textContent = "Team "+team;
-
-            const input =
-                document.createElement("input");
-
-            input.type = "number";
-            input.min = "0";
-            input.max = "999";
-            input.step = "1";
-
-            input.placeholder =
-                team===1?String(target):"0";
-
-            input.dataset.game = String(n);
-            input.dataset.team = String(team);
-
-            input.addEventListener("input",() => {
-                pendingMatchId = null;
-                updateWinnerPreview();
-            });
-
-            label.append(input);
-            row.append(label);
-        }
-
-        area.append(row);
-    }
-
-    updateWinnerPreview();
+    pendingMatchId = null;
+    updatePreview();
 }
 
-function parseScore(value) {
-
-    if(value.trim()==="") return null;
-
-    const n = Number(value);
-
-    return (
-        Number.isSafeInteger(n) &&
-        n>=0 &&
-        n<=999
-    ) ? n : null;
-}
-
-/* VALIDATE SERIES */
-
-function getMatchData() {
+function readMatch() {
 
     const ids = [
         "t1p1","t1p2","t2p1","t2p2"
-    ].map(id => Number($(id).value));
+    ].map(id=>Number($(id).value));
 
-    const target = Number($("gameTarget").value);
     const bestOf = Number($("bestOf").value);
+    const target = Number($("gameTarget").value);
 
-    const games = [];
+    const raw1 = $("team1Score").value.trim();
+    const raw2 = $("team2Score").value.trim();
 
-    let gap = false;
-    let invalid = "";
+    const s1 = Number(raw1);
+    const s2 = Number(raw2);
 
-    for(let n=1;n<=bestOf;n++) {
-
-        const a = $("gameRows")
-            .querySelector(
-                `[data-game="${n}"][data-team="1"]`
-            ).value.trim();
-
-        const b = $("gameRows")
-            .querySelector(
-                `[data-game="${n}"][data-team="2"]`
-            ).value.trim();
-
-        if(a==="" && b==="") {
-            gap = true;
-            continue;
-        }
-
-        if(gap) {
-            invalid = "Enter games without gaps.";
-            break;
-        }
-
-        if(a==="" || b==="") {
-            invalid = "Enter both scores for game "+n;
-            break;
-        }
-
-        const t1 = parseScore(a);
-        const t2 = parseScore(b);
-
-        if(t1===null || t2===null) {
-            invalid = "Invalid score in game "+n;
-            break;
-        }
-
-        const high = Math.max(t1,t2);
-        const low = Math.min(t1,t2);
-
-        const normalFinish =
-            high===target && low<=target-2;
-
-        const deuceFinish =
-            low>=target-1 && high===low+2;
-
-        if(!normalFinish && !deuceFinish) {
-            invalid =
-                `Game ${n} must be to ${target}, `+
-                "win by two.";
-            break;
-        }
-
-        games.push({team1:t1,team2:t2});
-    }
-
-    const needed = (bestOf+1)/2;
-
-    let w1=0;
-    let w2=0;
-
-    for(let n=0;n<games.length;n++) {
-
-        if(games[n].team1>games[n].team2) {
-            w1++;
-        } else {
-            w2++;
-        }
-
-        if(
-            (w1===needed || w2===needed) &&
-            n!==games.length-1
-        ) {
-            invalid =
-                "The series cannot continue after "+
-                "a team has won.";
-            break;
-        }
-    }
-
-    if(!invalid && w1!==needed && w2!==needed) {
-        invalid =
-            `Enter scores until one team wins `+
-            `${needed} game(s).`;
+    if(
+        ids.some(id=>!id) ||
+        new Set(ids).size!==4
+    ) {
+        return {error:"Select four different players."};
     }
 
     if(
-        ids.some(id=>id<=0) ||
-        new Set(ids).size!==4
+        raw1==="" ||
+        raw2==="" ||
+        !Number.isSafeInteger(s1) ||
+        !Number.isSafeInteger(s2) ||
+        s1<0 || s2<0 ||
+        s1>999 || s2>999
     ) {
-        invalid = "Select four different players.";
+        return {error:"Enter valid scores for both teams."};
+    }
+
+    if(s1===s2) {
+        return {error:"The match cannot end in a tie."};
+    }
+
+    const high = Math.max(s1,s2);
+    const low = Math.min(s1,s2);
+
+    if(bestOf===1) {
+
+        const normal =
+            high===target && low<=target-2;
+
+        const extended =
+            low>=target-1 && high===low+2;
+
+        if(!normal && !extended) {
+            return {
+                error:
+                "Single games must reach "+
+                target+" and be won by two."
+            };
+        }
+
+    } else {
+
+        const needed = (bestOf+1)/2;
+
+        if(high!==needed || low>=needed) {
+            return {
+                error:bestOf===3
+                    ? "Enter 2–0 or 2–1."
+                    : "Enter 3–0, 3–1, or 3–2."
+            };
+        }
     }
 
     return {
-        ids,target,bestOf,games,w1,w2,invalid
+        ids,bestOf,target,s1,s2,
+        team1Wins:s1>s2
     };
 }
 
-/* MATCH PREVIEW */
+function updatePreview() {
 
-function updateWinnerPreview() {
+    const m = readMatch();
 
-    const m = getMatchData();
-
-    if(m.invalid) {
-        $("winnerPreview").textContent = m.invalid;
+    if(m.error) {
+        $("winnerPreview").textContent = m.error;
         return;
     }
 
-    const team1Wins = m.w1>m.w2;
-
-    const winningIds = team1Wins
+    const winners = m.team1Wins
         ? m.ids.slice(0,2)
         : m.ids.slice(2,4);
 
-    const names = winningIds.map(id =>
-        players.find(p=>p.id===id)?.name||"Unknown"
+    const names = winners.map(id =>
+        players.find(p=>p.id===id)?.name
     );
 
-    const delta = expectedEloChange(
-        m.ids,team1Wins,m.target,m.bestOf
+    const delta = calculateElo(
+        m.ids,m.team1Wins,m.target,m.bestOf
     );
+
+    const format = m.bestOf===1
+        ? "Single game to "+m.target
+        : "Best of "+m.bestOf;
 
     $("winnerPreview").textContent =
         "Winner: "+names.join(" & ")+
-        ` (${m.w1}-${m.w2} games)`+
-        ` | K=${eloK(m.target,m.bestOf)}`+
-        ` | Team 1: ${signed(delta)} Elo each`+
-        ` | Team 2: ${signed(-delta)} Elo each`;
+        " | "+format+
+        " | Result: "+m.s1+"–"+m.s2+
+        " | Team 1: "+signed(delta)+" Elo each"+
+        " | Team 2: "+signed(-delta)+" Elo each";
 }
-
-/* OPEN MATCH PANEL */
 
 $("matchButton").onclick = () => {
 
     if(!isAdmin) return;
 
-    $("editor").classList.add("hidden");
-    $("registerPanel").classList.add("hidden");
+    closePanels();
+    populatePlayers();
 
-    populateMatchPlayers();
     $("matchForm").reset();
-
     pendingMatchId = null;
 
-    renderGameInputs();
-
     $("matchPanel").classList.remove("hidden");
+
+    updateFormat();
 };
 
 $("cancelMatch").onclick = () => {
     $("matchPanel").classList.add("hidden");
-    pendingMatchId = null;
 };
 
+$("bestOf").onchange = updateFormat;
+$("gameTarget").onchange = updateFormat;
+
 for(const id of [
-    "t1p1","t1p2","t2p1","t2p2"
+    "t1p1","t1p2","t2p1","t2p2",
+    "team1Score","team2Score"
 ]) {
-    $(id).addEventListener("change",() => {
+
+    $(id).addEventListener("input",() => {
         pendingMatchId = null;
-        updateWinnerPreview();
+        updatePreview();
     });
 }
 
-for(const id of ["gameTarget","bestOf"]) {
-
-    $(id).addEventListener("change",() => {
-        pendingMatchId = null;
-        renderGameInputs();
-    });
-}
-
-/* SAVE MATCH TO SUPABASE */
+/* SAVE MATCH */
 
 $("matchForm").onsubmit = async event => {
 
@@ -1111,25 +1062,27 @@ $("matchForm").onsubmit = async event => {
 
     if(!isAdmin) return;
 
-    const m = getMatchData();
+    const m = readMatch();
 
-    if(m.invalid) {
-        status(m.invalid);
+    if(m.error) {
+        status(m.error);
         return;
     }
 
-    const team1Wins = m.w1>m.w2;
-
-    const delta = expectedEloChange(
-        m.ids,team1Wins,m.target,m.bestOf
+    const delta = calculateElo(
+        m.ids,m.team1Wins,m.target,m.bestOf
     );
 
+    const format = m.bestOf===1
+        ? "Single game to "+m.target
+        : "Best of "+m.bestOf;
+
     const confirmed = window.confirm(
-        `Save match?\n`+
-        `Format: Best of ${m.bestOf}, to ${m.target}\n`+
-        `Games: ${m.w1}-${m.w2}\n`+
-        `Team 1: ${signed(delta)} Elo each\n`+
-        `Team 2: ${signed(-delta)} Elo each`
+        "Save this match?\n\n"+
+        format+"\n"+
+        "Result: "+m.s1+"–"+m.s2+"\n"+
+        "Team 1: "+signed(delta)+" Elo each\n"+
+        "Team 2: "+signed(-delta)+" Elo each"
     );
 
     if(!confirmed) return;
@@ -1142,7 +1095,7 @@ $("matchForm").onsubmit = async event => {
     status("Saving match...");
 
     const {error} = await supabase.rpc(
-        "record_doubles_series",
+        "record_simple_doubles_match",
         {
             p_request_id:pendingMatchId,
             p_team1_player1:m.ids[0],
@@ -1151,42 +1104,36 @@ $("matchForm").onsubmit = async event => {
             p_team2_player2:m.ids[3],
             p_game_target:m.target,
             p_best_of:m.bestOf,
-            p_games:m.games
+            p_team1_score:m.s1,
+            p_team2_score:m.s2
         }
     );
 
     $("submitMatch").disabled = false;
 
     if(error) {
-        status("Could not save match: "+error.message);
+        status("Match failed: "+error.message);
         return;
     }
 
     pendingMatchId = null;
-
     $("matchPanel").classList.add("hidden");
 
     if(await loadRankings()) {
-        status(
-            "Match saved. Elo and records updated "+
-            "for all four players."
-        );
+        status("Match saved. Elo and records updated.");
     }
 };
 
-/* REGISTER PLAYER */
+/* REGISTER NEW PLAYER */
 
 $("registerButton").onclick = () => {
 
     if(!isAdmin) return;
 
-    $("matchPanel").classList.add("hidden");
-    $("editor").classList.add("hidden");
-
+    closePanels();
     $("registerForm").reset();
-    $("registerPanel").classList.remove("hidden");
 
-    $("newPlayerName").focus();
+    $("registerPanel").classList.remove("hidden");
 };
 
 $("cancelRegister").onclick = () => {
@@ -1200,8 +1147,7 @@ $("registerForm").onsubmit = async event => {
     if(!isAdmin) return;
 
     const name = $("newPlayerName").value
-        .trim()
-        .replace(/\s+/g," ");
+        .trim().replace(/\s+/g," ");
 
     if(name.length<2 || name.length>80) {
         status("Enter a valid player name.");
@@ -1226,27 +1172,22 @@ $("registerForm").onsubmit = async event => {
     $("registerPanel").classList.add("hidden");
 
     if(await loadRankings()) {
-        status(name+" registered with 1,500 Elo.");
+        status(name+" registered at 1,500 Elo.");
     }
 };
 
-/* EDIT RANKINGS */
+/* MANUAL RANKINGS EDITOR */
 
 $("editButton").onclick = () => {
 
     if(!isAdmin) return;
 
-    $("matchPanel").classList.add("hidden");
-    $("registerPanel").classList.add("hidden");
+    closePanels();
 
-    const container = $("editRows");
-    container.innerHTML = "";
+    const area = $("editRows");
+    area.replaceChildren();
 
-    const sorted = [...players].sort(
-        (a,b)=>b.points-a.points||a.id-b.id
-    );
-
-    for(const p of sorted) {
+    for(const p of sortedPlayers()) {
 
         const row = document.createElement("div");
         row.className = "edit-row";
@@ -1254,23 +1195,20 @@ $("editButton").onclick = () => {
 
         const name = document.createElement("strong");
         name.textContent = p.name;
+
         row.append(name);
 
         for(const field of [
             "points","wins","losses"
         ]) {
 
-            const wrapper =
-                document.createElement("div");
-
-            const label =
-                document.createElement("label");
+            const wrapper = document.createElement("div");
+            const label = document.createElement("label");
 
             label.textContent =
                 field[0].toUpperCase()+field.slice(1);
 
-            const input =
-                document.createElement("input");
+            const input = document.createElement("input");
 
             input.type = "number";
             input.min = "0";
@@ -1284,7 +1222,7 @@ $("editButton").onclick = () => {
             row.append(wrapper);
         }
 
-        container.append(row);
+        area.append(row);
     }
 
     $("editor").classList.remove("hidden");
@@ -1293,8 +1231,6 @@ $("editButton").onclick = () => {
 $("cancelButton").onclick = () => {
     $("editor").classList.add("hidden");
 };
-
-/* SAVE MANUAL CHANGES */
 
 $("saveButton").onclick = async () => {
 
@@ -1306,13 +1242,9 @@ $("saveButton").onclick = async () => {
         document.querySelectorAll(".edit-row")
     ) {
 
-        const updated = {
-            id:Number(row.dataset.id)
-        };
+        const item = {id:Number(row.dataset.id)};
 
-        for(const input of
-            row.querySelectorAll("input")
-        ) {
+        for(const input of row.querySelectorAll("input")) {
 
             const value = Number(input.value);
 
@@ -1326,10 +1258,10 @@ $("saveButton").onclick = async () => {
                 return;
             }
 
-            updated[input.dataset.field] = value;
+            item[input.dataset.field] = value;
         }
 
-        updates.push(updated);
+        updates.push(item);
     }
 
     $("saveButton").disabled = true;
