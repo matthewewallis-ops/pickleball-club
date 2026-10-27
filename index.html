@@ -1082,7 +1082,17 @@ async function loadPending() {
                     ? 2
                     : 0;
 
-        const canApprove=isAdmin||(
+
+const losingPlayers =
+    m.team1_score > m.team2_score
+        ? [m.team2_player1, m.team2_player2]
+        : [m.team1_player1, m.team1_player2];
+
+const canApprove = isAdmin || (
+    account?.approved === true &&
+    m.submitted_by !== user.id &&
+    losingPlayers.includes(account.player_id)
+);
             current &&
             m.submitted_by!==user.id &&
             team(current)>0 &&
