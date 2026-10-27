@@ -939,14 +939,37 @@ footer{text-align:center;background:#001f42;color:#a4b8d3;padding:40px;margin-to
             </select>
           </div>
 
-          <div>
-            <label for="editPhotoUrl">
-              Photo URL (HTTPS, optional)
-            </label>
-            <input id="editPhotoUrl"
-              type="url"
-              placeholder="https://example.com/photo.jpg">
-          </div>
+        
+<div>
+  <label for="editPhotoFile">
+    Upload Profile Photo
+  </label>
+
+  <input
+    id="editPhotoFile"
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+  >
+
+  <img
+    id="editPhotoPreview"
+    alt="Selected profile photo"
+    style="
+      display:none;
+      width:130px;
+      height:130px;
+      object-fit:cover;
+      border-radius:8px;
+      margin-top:12px;
+    "
+  >
+
+  <p class="muted">
+    JPG, PNG or WebP. Maximum 4 MB.
+    Click Save My Profile to upload.
+  </p>
+</div>
+
 
         </div>
 
@@ -2512,7 +2535,6 @@ function renderProfile(p,profile){
     ['editAge',profile?.age],
     ['editHeight',profile?.height],
     ['editPlays',profile?.plays],
-    ['editPhotoUrl',profile?.photo_url],
     ['editBio',profile?.bio]
   ]){
     $(id).value=value??'';
@@ -2608,36 +2630,7 @@ $('cancelProfileEdit').onclick=()=>{
   $('profileEditPanel').classList.add('hidden');
 };
 
-$('profileEditForm').onsubmit=async e=>{
-  e.preventDefault();
 
-  if(
-    !user||
-    !account?.approved||
-    account.player_id!==profilePlayerId
-  ){
-    setProfileStatus(
-      'Only the linked player can edit this profile.'
-    );
-    return;
-  }
-
-  const rawUrl=$('editPhotoUrl').value.trim();
-
-  if(rawUrl){
-    try{
-      const u=new URL(rawUrl);
-
-      if(u.protocol!=='https:'){
-        throw Error();
-      }
-    }catch{
-      setProfileStatus(
-        'Use an HTTPS photo URL or leave it blank.'
-      );
-      return;
-    }
-  }
 
   const ageRaw=$('editAge').value.trim();
   const age=ageRaw?Number(ageRaw):null;
