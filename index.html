@@ -1,80 +1,268 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pickleball Club | Rankings</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pickleball Club | Official Rankings</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f4f6f9;color:#152945;font-family:Arial,Helvetica,sans-serif}
+body{
+  margin:0;
+  background:#f4f6f9;
+  color:#152945;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.hidden{display:none!important}
 header{background:#002b5c;color:white}
-.top{max-width:1200px;margin:auto;padding:25px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.top{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
 .logo span{color:#00a8ff}
-.nav{display:flex;gap:8px;padding:0 max(18px,calc((100vw - 1200px)/2));background:#001f42;border-bottom:3px solid #0075d5;overflow-x:auto}
-.nav button{color:#c5d9ee;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:18px 15px;white-space:nowrap}
-.nav button.active{border-bottom-color:#dfff00;color:white}
-.hero{background:linear-gradient(115deg,#003c80,#001b3b);color:white;padding:64px max(20px,calc((100vw - 1200px)/2))}
-.hero small{color:#79c6ff;letter-spacing:2px;font-weight:700}
-.hero h1{font-size:clamp(34px,6vw,56px);margin:10px 0 0}
-.wrap{max-width:1200px;padding:0 20px;margin:40px auto;min-height:300px}
+.nav{
+  display:flex;
+  gap:8px;
+  padding:0 max(18px,calc((100vw - 1200px)/2));
+  background:#001f42;
+  border-bottom:3px solid #0075d5;
+  overflow-x:auto;
+}
+.nav button{
+  color:#c5d9ee;
+  border:0;
+  border-bottom:3px solid transparent;
+  border-radius:0;
+  background:transparent;
+  padding:18px 15px;
+  white-space:nowrap;
+}
+.nav button.active{
+  border-bottom-color:#dfff00;
+  color:white;
+}
+.hero{
+  background:linear-gradient(115deg,#003c80,#001b3b);
+  color:white;
+  padding:64px max(20px,calc((100vw - 1200px)/2));
+}
+.hero small{
+  color:#79c6ff;
+  letter-spacing:2px;
+  font-weight:700;
+}
+.hero h1{
+  font-size:clamp(34px,6vw,56px);
+  margin:10px 0 0;
+}
+.wrap{
+  max-width:1200px;
+  padding:0 20px;
+  margin:40px auto;
+  min-height:300px;
+}
 h2{color:#002b5c;margin:0 0 20px}
 h3{margin:0 0 17px;color:#002b5c}
-.panel{background:#fff;padding:24px;border:1px solid #e0e6ed;border-radius:8px;margin:16px 0;box-shadow:0 5px 20px #071f3e08}
-.toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.buttons,.inline{display:flex;flex-wrap:wrap;gap:10px}
-button{font:700 13px Arial,sans-serif;padding:12px 17px;border:0;border-radius:5px;cursor:pointer}
+.panel{
+  background:#fff;
+  padding:24px;
+  border:1px solid #e0e6ed;
+  border-radius:8px;
+  margin:16px 0;
+  box-shadow:0 5px 20px #071f3e08;
+}
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.buttons,.inline{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+button{
+  font:700 13px Arial,sans-serif;
+  padding:12px 17px;
+  border:0;
+  border-radius:5px;
+  cursor:pointer;
+}
 button:hover{filter:brightness(.95)}
-button:disabled{opacity:.45;cursor:wait}
+button:disabled{opacity:.45;cursor:not-allowed}
 .primary{background:#0071ce;color:white}
 .secondary{background:#e4edf6;color:#002b5c}
 .danger{background:#fff0f0;color:#a62222}
-.hidden{display:none!important}
-label{font-size:12px;color:#63758a;display:block;margin:0 0 7px;font-weight:700}
-input,select{width:100%;border:1px solid #cbd5df;border-radius:5px;background:white;color:#172b4d;font:inherit;padding:12px;min-width:0}
+label{
+  font-size:12px;
+  color:#63758a;
+  display:block;
+  margin:0 0 7px;
+  font-weight:700;
+}
+input,select{
+  width:100%;
+  border:1px solid #cbd5df;
+  border-radius:5px;
+  background:white;
+  color:#172b4d;
+  font:inherit;
+  padding:12px;
+  min-width:0;
+}
 input[type=number]{max-width:200px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:17px}
-.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:15px 0}
+.cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+}
+.fields{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin:15px 0;
+}
 .field{min-width:0}
-.muted{font-size:13px;color:#687a90;line-height:1.5}
-.status{font-size:13px;min-height:18px;color:#315b85;margin:16px 0;white-space:pre-wrap}
-.tablewrap{overflow:auto;background:white;border:1px solid #e1e5eb;border-radius:7px}
-table{border-collapse:collapse;width:100%;min-width:640px}
-th{text-align:left;text-transform:uppercase;background:#edf1f6;padding:18px;font-size:12px;color:#586c80}
-td{padding:19px 18px;border-top:1px solid #e7ecf1}
+.muted{
+  font-size:13px;
+  color:#687a90;
+  line-height:1.5;
+}
+.status{
+  font-size:13px;
+  min-height:18px;
+  color:#315b85;
+  margin:16px 0;
+  white-space:pre-wrap;
+}
+.tablewrap{
+  overflow:auto;
+  background:white;
+  border:1px solid #e1e5eb;
+  border-radius:7px;
+}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:640px;
+}
+th{
+  text-align:left;
+  text-transform:uppercase;
+  background:#edf1f6;
+  padding:18px;
+  font-size:12px;
+  color:#586c80;
+}
+td{
+  padding:19px 18px;
+  border-top:1px solid #e7ecf1;
+}
 tr:hover td{background:#f8fbff}
-.rank{font-size:25px;font-weight:800;color:#003c80}
-.player{font-size:17px;color:#003b7a;font-weight:700}
-.smallbtn{padding:8px 12px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.score{display:flex;gap:15px;align-items:center}
-.h2h{background:#0b104c;color:white;border-radius:9px;padding:35px 24px}
+.rank{
+  font-size:25px;
+  font-weight:800;
+  color:#003c80;
+}
+.player{
+  font-size:17px;
+  color:#003b7a;
+  font-weight:700;
+}
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+.h2h{
+  background:#0b104c;
+  color:white;
+  border-radius:9px;
+  padding:35px 24px;
+}
 .h2h h2{color:white;text-align:center}
 .h2h .muted{color:#c1d0f2}
-.h2h-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:18px 0;border-bottom:1px solid #4b5ba3;text-align:center}
+.h2h-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  padding:18px 0;
+  border-bottom:1px solid #4b5ba3;
+  text-align:center;
+}
 .h2h-row strong:first-child{text-align:left}
 .h2h-row strong:last-child{text-align:right}
-.h2h-profiles{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;text-align:center;align-items:center;margin:35px 0}
+.h2h-profiles{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:10px;
+  text-align:center;
+  align-items:center;
+  margin:35px 0;
+}
 .h2h-profiles h3{color:white}
-.circle{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:#174b8a;border:2px solid #dfff00;margin:0 auto 10px;font-weight:900;font-size:26px}
+.circle{
+  width:78px;
+  height:78px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#174b8a;
+  border:2px solid #dfff00;
+  margin:0 auto 10px;
+  font-weight:900;
+  font-size:26px;
+}
 .vs{font-size:26px;font-weight:900}
-.notice{padding:12px;background:#ecf4ff;border-left:3px solid #0071ce;margin:12px 0}
-.request{display:flex;gap:15px;align-items:center;justify-content:space-between;border-bottom:1px solid #e3e8f0;padding:15px 0;flex-wrap:wrap}
-.request strong{display:block;margin-bottom:6px}
-.chip{display:inline-block;padding:4px 8px;border-radius:20px;background:#e8f3ff;color:#004f92;font-size:12px}
-footer{text-align:center;background:#001f42;color:#a4b8d3;padding:40px;margin-top:70px}
+.notice{
+  padding:12px;
+  background:#ecf4ff;
+  border-left:3px solid #0071ce;
+  margin:12px 0;
+}
+.request{
+  display:flex;
+  gap:15px;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #e3e8f0;
+  padding:15px 0;
+  flex-wrap:wrap;
+}
+.request strong{
+  display:block;
+  margin-bottom:6px;
+}
+footer{
+  text-align:center;
+  background:#001f42;
+  color:#a4b8d3;
+  padding:40px;
+  margin-top:70px;
+}
 @media(max-width:650px){
-.top{padding:18px}
-.logo{font-size:19px}
-.hero{padding:45px 20px}
-.wrap{margin:26px auto}
-.cols,.fields,.cards{grid-template-columns:1fr}
-.h2h-profiles{gap:5px}
-.h2h-profiles h3{font-size:14px}
-.h2h-row{font-size:12px}
-.panel{padding:16px}
+  .top{padding:18px}
+  .logo{font-size:19px}
+  .hero{padding:45px 20px}
+  .wrap{margin:26px auto}
+  .cols,.fields,.cards{grid-template-columns:1fr}
+  .h2h-profiles{gap:5px}
+  .h2h-profiles h3{font-size:14px}
+  .h2h-row{font-size:12px}
+  .panel{padding:16px}
 }
 </style>
 </head>
@@ -82,22 +270,26 @@ footer{text-align:center;background:#001f42;color:#a4b8d3;padding:40px;margin-to
 <body>
 
 <header>
-<div class="top">
-<div class="logo">PICKLEBALL<span>CLUB</span></div>
-<span>2026 SEASON</span>
-</div>
+  <div class="top">
+    <div class="logo">
+      PICKLEBALL<span>CLUB</span>
+    </div>
+    <span>2026 SEASON</span>
+  </div>
 </header>
 
 <nav class="nav">
-<button data-page="rankings" class="active">Rankings</button>
-<button data-page="h2h">Head-to-Head</button>
-<button data-page="submit">Submit Match</button>
-<button data-page="account">My Account</button>
+  <button data-page="rankings" class="active">
+    Rankings
+  </button>
+  <button data-page="h2h">Head-to-Head</button>
+  <button data-page="submit">Submit Match</button>
+  <button data-page="account">My Account</button>
 </nav>
 
 <section class="hero">
-<small>2026 SEASON</small>
-<h1 id="heroTitle">Official Rankings</h1>
+  <small>2026 SEASON</small>
+  <h1 id="heroTitle">Official Rankings</h1>
 </section>
 
 <main class="wrap">
@@ -105,604 +297,687 @@ footer{text-align:center;background:#001f42;color:#a4b8d3;padding:40px;margin-to
 <!-- RANKINGS -->
 
 <section id="rankingsPage">
-<div class="toolbar">
-<h2>Club Rankings</h2>
-<div class="buttons">
-<button id="adminButton" class="secondary hidden">Admin Tools</button>
-</div>
-</div>
+  <div class="toolbar">
+    <h2>Club Rankings</h2>
+    <div class="buttons">
+      <button id="adminButton"
+        class="secondary hidden">
+        Admin Tools
+      </button>
+    </div>
+  </div>
 
-<div class="tablewrap">
-<table>
-<thead>
-<tr>
-<th>Rank</th>
-<th>Player</th>
-<th>Elo Points</th>
-<th>Wins</th>
-<th>Losses</th>
-<th>Win %</th>
-</tr>
-</thead>
-<tbody id="rankingsBody"></tbody>
-</table>
-</div>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Elo Points</th>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>Win %</th>
+        </tr>
+      </thead>
+      <tbody id="rankingsBody"></tbody>
+    </table>
+  </div>
 </section>
 
 <!-- HEAD TO HEAD -->
 
 <section id="h2hPage" class="hidden">
-<div class="h2h">
-<h2>HEAD TO HEAD</h2>
-<p class="muted" style="text-align:center">
-Doubles matches on opposing teams only
-</p>
+  <div class="h2h">
+    <h2>HEAD TO HEAD</h2>
 
-<div class="cols">
-<div>
-<label for="hLeft">PLAYER 1</label>
-<select id="hLeft"></select>
-</div>
-<div>
-<label for="hRight">PLAYER 2</label>
-<select id="hRight"></select>
-</div>
-</div>
+    <p class="muted" style="text-align:center">
+      Doubles matches on opposing teams only
+    </p>
 
-<p id="hStatus" class="muted" style="text-align:center"></p>
+    <div class="cols">
+      <div>
+        <label>PLAYER 1</label>
+        <select id="hLeft"></select>
+      </div>
+      <div>
+        <label>PLAYER 2</label>
+        <select id="hRight"></select>
+      </div>
+    </div>
 
-<div id="hResults">
-<div class="h2h-profiles">
-<div>
-<div class="circle" id="hInitial1">—</div>
-<h3 id="hName1"></h3>
-<p id="hRank1"></p>
-</div>
+    <p id="hStatus" class="muted"
+      style="text-align:center"></p>
 
-<div class="vs">
-<span id="hWins1">0</span>
-VS
-<span id="hWins2">0</span>
-</div>
+    <div id="hResults">
+      <div class="h2h-profiles">
+        <div>
+          <div class="circle" id="hInitial1">—</div>
+          <h3 id="hName1"></h3>
+          <p id="hRank1"></p>
+        </div>
 
-<div>
-<div class="circle" id="hInitial2">—</div>
-<h3 id="hName2"></h3>
-<p id="hRank2"></p>
-</div>
-</div>
+        <div class="vs">
+          <span id="hWins1">0</span>
+          VS
+          <span id="hWins2">0</span>
+        </div>
 
-<div class="h2h-row">
-<strong id="hElo1"></strong>
-<span>Elo Points</span>
-<strong id="hElo2"></strong>
-</div>
-<div class="h2h-row">
-<strong id="hRecord1"></strong>
-<span>Overall W/L</span>
-<strong id="hRecord2"></strong>
-</div>
-<div class="h2h-row">
-<strong id="hPct1"></strong>
-<span>Win %</span>
-<strong id="hPct2"></strong>
-</div>
+        <div>
+          <div class="circle" id="hInitial2">—</div>
+          <h3 id="hName2"></h3>
+          <p id="hRank2"></p>
+        </div>
+      </div>
 
-<p class="muted" id="hMeetings" style="text-align:center"></p>
-</div>
-</div>
+      <div class="h2h-row">
+        <strong id="hElo1"></strong>
+        <span>Elo Points</span>
+        <strong id="hElo2"></strong>
+      </div>
+
+      <div class="h2h-row">
+        <strong id="hRecord1"></strong>
+        <span>Overall W/L</span>
+        <strong id="hRecord2"></strong>
+      </div>
+
+      <div class="h2h-row">
+        <strong id="hPct1"></strong>
+        <span>Win %</span>
+        <strong id="hPct2"></strong>
+      </div>
+
+      <p id="hMeetings" class="muted"
+        style="text-align:center"></p>
+    </div>
+  </div>
 </section>
 
 <!-- SUBMIT MATCH -->
 
 <section id="submitPage" class="hidden">
-<h2>Submit Doubles Match</h2>
+  <h2>Submit Doubles Match</h2>
 
-<p class="muted">
-Anyone with an approved player account can submit a match.
-An opposing player must confirm the result before Elo and records change.
-</p>
+  <p class="muted">
+    Players with approved accounts can submit matches.
+    At least one player on the losing team must confirm
+    the result before Elo points and records change.
+    Administrators can resolve matches if needed.
+  </p>
 
-<div id="submitGate" class="notice"></div>
+  <div id="submitGate" class="notice"></div>
 
-<div class="panel" id="submitFormPanel">
-<form id="matchForm">
+  <div class="panel" id="submitFormPanel">
+    <form id="matchForm">
 
-<div class="cols">
-<div class="field">
-<label>Match Format</label>
-<select id="bestOf">
-<option value="1">Single game</option>
-<option value="3">Best of 3</option>
-<option value="5">Best of 5</option>
-</select>
-</div>
+      <div class="cols">
+        <div class="field">
+          <label>Match Format</label>
+          <select id="bestOf">
+            <option value="1">Single game</option>
+            <option value="3">Best of 3</option>
+            <option value="5">Best of 5</option>
+          </select>
+        </div>
 
-<div class="field" id="targetField">
-<label>Play To</label>
-<select id="gameTarget">
-<option value="7">7 points</option>
-<option value="11" selected>11 points</option>
-</select>
-</div>
-</div>
+        <div class="field" id="targetField">
+          <label>Play To</label>
+          <select id="gameTarget">
+            <option value="7">7 points</option>
+            <option value="11" selected>
+              11 points
+            </option>
+          </select>
+        </div>
+      </div>
 
-<div class="cards" style="margin-top:20px">
-<div class="panel" style="margin:0;background:#f5f8fc">
-<h3>Team 1</h3>
-<div class="field">
-<label>Player 1</label>
-<select id="t1p1"></select>
-</div>
-<div class="field" style="margin-top:12px">
-<label>Player 2</label>
-<select id="t1p2"></select>
-</div>
-</div>
+      <div class="cards" style="margin-top:20px">
 
-<div class="panel" style="margin:0;background:#f5f8fc">
-<h3>Team 2</h3>
-<div class="field">
-<label>Player 1</label>
-<select id="t2p1"></select>
-</div>
-<div class="field" style="margin-top:12px">
-<label>Player 2</label>
-<select id="t2p2"></select>
-</div>
-</div>
-</div>
+        <div class="panel"
+          style="margin:0;background:#f5f8fc">
+          <h3>Team 1</h3>
 
-<h3 style="margin-top:22px" id="scoreTitle">
-Final Game Score
-</h3>
+          <div class="field">
+            <label>Player 1</label>
+            <select id="t1p1"></select>
+          </div>
 
-<p class="muted" id="scoreHelp">
-Enter the final score, win by two.
-</p>
+          <div class="field" style="margin-top:12px">
+            <label>Player 2</label>
+            <select id="t1p2"></select>
+          </div>
+        </div>
 
-<div class="cols">
-<div>
-<label>Team 1 Score</label>
-<input id="score1" type="number" min="0" max="999" required>
-</div>
-<div>
-<label>Team 2 Score</label>
-<input id="score2" type="number" min="0" max="999" required>
-</div>
-</div>
+        <div class="panel"
+          style="margin:0;background:#f5f8fc">
+          <h3>Team 2</h3>
 
-<div id="matchPreview" class="notice">
-Select the players and score.
-</div>
+          <div class="field">
+            <label>Player 1</label>
+            <select id="t2p1"></select>
+          </div>
 
-<button class="primary" id="submitMatchButton" type="submit">
-Submit for Confirmation
-</button>
+          <div class="field" style="margin-top:12px">
+            <label>Player 2</label>
+            <select id="t2p2"></select>
+          </div>
+        </div>
+      </div>
 
-</form>
-</div>
+      <h3 style="margin-top:22px" id="scoreTitle">
+        Final Game Score
+      </h3>
 
-<div class="panel">
-<h3>Matches Awaiting Your Confirmation</h3>
-<div id="myPending">Sign in to view your matches.</div>
-</div>
+      <p class="muted" id="scoreHelp">
+        Enter the final score, win by two.
+      </p>
+
+      <div class="cols">
+        <div>
+          <label>Team 1 Score</label>
+          <input id="score1" type="number"
+            min="0" max="999" required>
+        </div>
+
+        <div>
+          <label>Team 2 Score</label>
+          <input id="score2" type="number"
+            min="0" max="999" required>
+        </div>
+      </div>
+
+      <div id="matchPreview" class="notice">
+        Select the players and score.
+      </div>
+
+      <button class="primary"
+        id="submitMatchButton" type="submit">
+        Submit for Confirmation
+      </button>
+
+    </form>
+  </div>
+
+  <div class="panel">
+    <h3>Matches Awaiting Confirmation</h3>
+    <div id="myPending">
+      Sign in to view your matches.
+    </div>
+  </div>
 </section>
 
-<!-- PLAYER ACCOUNT -->
+<!-- MY ACCOUNT -->
 
 <section id="accountPage" class="hidden">
-<h2>My Account</h2>
+  <h2>My Account</h2>
 
-<div class="panel" id="signedOut">
-<h3>Create Account</h3>
-<p class="muted">
-Register with your email and password.
-Verify your email, then request your player profile
-for administrator approval.
-</p>
+  <div class="panel" id="signedOut">
+    <h3>Create Account</h3>
 
-<form id="signupForm">
-<div class="fields">
-<div>
-<label>Email</label>
-<input id="signupEmail" type="email"
-autocomplete="email" required>
-</div>
-<div>
-<label>Password (at least 8 characters)</label>
-<input id="signupPassword" type="password"
-minlength="8" autocomplete="new-password" required>
-</div>
-</div>
-<button class="primary" type="submit">Create Account</button>
-</form>
+    <p class="muted">
+      Register with your email and password.
+      Verify your email, then request your player profile
+      for administrator approval.
+    </p>
 
-<hr style="border:0;border-top:1px solid #e5eaf1;margin:25px 0">
+    <form id="signupForm">
+      <div class="fields">
+        <div>
+          <label>Email</label>
+          <input id="signupEmail" type="email"
+            autocomplete="email" required>
+        </div>
 
-<h3>Log In</h3>
-<form id="loginForm">
-<div class="fields">
-<div>
-<label>Email</label>
-<input id="loginEmail" type="email"
-autocomplete="username" required>
-</div>
-<div>
-<label>Password</label>
-<input id="loginPassword" type="password"
-autocomplete="current-password" required>
-</div>
-</div>
+        <div>
+          <label>Password (at least 8 characters)</label>
+          <input id="signupPassword"
+            type="password" minlength="8"
+            autocomplete="new-password" required>
+        </div>
+      </div>
 
-<div class="buttons">
-<button class="primary" type="submit">Log In</button>
-<button class="secondary" type="button" id="forgotButton">
-Forgot Password
-</button>
-</div>
-</form>
-</div>
+      <button class="primary" type="submit">
+        Create Account
+      </button>
+    </form>
 
-<div id="signedIn" class="panel hidden">
-<div class="toolbar">
-<div>
-<h3>Signed In</h3>
-<p id="myEmail"></p>
-<p class="muted" id="myRole"></p>
-</div>
-<button class="secondary" id="logoutButton">Log Out</button>
-</div>
+    <hr style="border:0;border-top:1px solid #e5eaf1;margin:25px 0">
 
-<div id="linkSection">
-<p class="muted">
-To submit and confirm matches, request your registered
-player identity. The administrator will review your request.
-</p>
-<div class="fields">
-<div>
-<label>Your Player Profile</label>
-<select id="claimPlayer"></select>
-</div>
-</div>
-<button id="claimButton" class="primary">
-Request Player Approval
-</button>
-</div>
-</div>
+    <h3>Log In</h3>
+
+    <form id="loginForm">
+      <div class="fields">
+        <div>
+          <label>Email</label>
+          <input id="loginEmail" type="email"
+            autocomplete="username" required>
+        </div>
+
+        <div>
+          <label>Password</label>
+          <input id="loginPassword"
+            type="password"
+            autocomplete="current-password" required>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="primary" type="submit">
+          Log In
+        </button>
+
+        <button class="secondary"
+          type="button" id="forgotButton">
+          Forgot Password
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div id="signedIn" class="panel hidden">
+    <div class="toolbar">
+      <div>
+        <h3>Signed In</h3>
+        <p id="myEmail"></p>
+        <p class="muted" id="myRole"></p>
+      </div>
+
+      <button class="secondary" id="logoutButton">
+        Log Out
+      </button>
+    </div>
+
+    <div id="linkSection">
+      <p class="muted">
+        Select your registered player profile.
+        An administrator must approve the request
+        before you can submit matches.
+      </p>
+
+      <div class="fields">
+        <div>
+          <label>Your Player Profile</label>
+          <select id="claimPlayer"></select>
+        </div>
+      </div>
+
+      <button id="claimButton" class="primary">
+        Request Player Approval
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- ADMIN TOOLS -->
 
 <section id="adminPage" class="hidden">
-<h2>Admin Tools</h2>
+  <h2>Admin Tools</h2>
 
-<div class="panel">
-<h3>Approve Player Accounts</h3>
-<div id="adminClaims"></div>
-</div>
+  <div class="panel">
+    <h3>Approve Player Accounts</h3>
+    <div id="adminClaims"></div>
+  </div>
 
-<div class="panel">
-<h3>Review Submitted Matches</h3>
-<div id="adminMatches"></div>
-</div>
+  <div class="panel">
+    <h3>Review Submitted Matches</h3>
+    <div id="adminMatches"></div>
+  </div>
 
-<div class="panel">
-<h3>Register a New Player</h3>
-<form id="registerForm" class="inline">
-<input id="newPlayerName" placeholder="Full name"
-minlength="2" maxlength="80" required
-style="max-width:350px">
-<button class="primary" type="submit">
-Add Player (1,500 Elo)
-</button>
-</form>
-</div>
+  <div class="panel">
+    <h3>Register a New Player</h3>
 
-<div class="panel">
-<h3>Manual Ranking Editor</h3>
-<div id="editRows"></div>
-<button id="saveRankings" class="primary"
-style="margin-top:15px">
-Save Rankings
-</button>
-</div>
+    <form id="registerForm" class="inline">
+      <input id="newPlayerName"
+        placeholder="Full name"
+        minlength="2" maxlength="80" required
+        style="max-width:350px">
+
+      <button class="primary" type="submit">
+        Add Player (1,500 Elo)
+      </button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h3>Manual Ranking Editor</h3>
+    <div id="editRows"></div>
+
+    <button id="saveRankings"
+      class="primary" style="margin-top:15px">
+      Save Rankings
+    </button>
+  </div>
 </section>
 
 <p id="status" class="status" role="status"></p>
+
 </main>
 
-<footer>Pickleball Club · Official Rankings · 2026</footer>
+<footer>
+  Pickleball Club · Official Rankings · 2026
+</footer>
 
 <script type="module">
 
 import {createClient} from
 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const db = createClient(
-    'https://iwqidqqwrojottqamyte.supabase.co',
-    'sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g'
+const db=createClient(
+  'https://iwqidqqwrojottqamyte.supabase.co',
+  'sb_publishable_V0a0vy7jv8j1XXWryFjdlA_9Uw73d7g'
 );
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
 
-let players = [];
-let user = null;
-let account = null;
-let isAdmin = false;
-let page = 'rankings';
-let hSeq = 0;
+let players=[];
+let user=null;
+let account=null;
+let isAdmin=false;
+let page='rankings';
+let hSeq=0;
+let busyReview=false;
 
-const sorted = () =>
-    [...players].sort((a,b) =>
-        b.points-a.points || a.id-b.id
-    );
+const sorted=()=>
+  [...players].sort((a,b)=>
+    b.points-a.points||a.id-b.id
+  );
 
-const nameOf = id =>
-    players.find(p=>p.id===id)?.name || `Player #${id}`;
+const nameOf=id=>
+  players.find(p=>p.id===id)?.name||
+  `Player #${id}`;
 
-const pct = p =>
-    (p.wins+p.losses
-        ? 100*p.wins/(p.wins+p.losses)
-        : 0
-    ).toFixed(1)+'%';
+const pct=p=>(
+  p.wins+p.losses
+    ? 100*p.wins/(p.wins+p.losses)
+    : 0
+).toFixed(1)+'%';
 
-const initial = s =>
-    s.trim().split(/\s+/)
-    .map(x=>x[0]).join('').toUpperCase();
+const initial=s=>
+  s.trim().split(/\s+/)
+    .map(x=>x[0])
+    .join('')
+    .toUpperCase();
 
-const message = s => {
-    $('status').textContent = s;
+const message=s=>{
+  $('status').textContent=s;
 };
 
-function el(tag,text,cls) {
-    const e = document.createElement(tag);
-    if(text!==undefined) e.textContent=text;
-    if(cls) e.className=cls;
-    return e;
+function el(tag,text,cls){
+  const e=document.createElement(tag);
+  if(text!==undefined)e.textContent=text;
+  if(cls)e.className=cls;
+  return e;
 }
 
-/* PLAYER DATA */
+/* LOAD PLAYER DATA */
 
-function optionList(id,placeholder='Select Player') {
-    const select = $(id);
-    const previous = select.value;
+function optionList(id,placeholder='Select Player'){
+  const select=$(id);
+  const previous=select.value;
 
-    select.replaceChildren(
-        new Option(placeholder,'')
-    );
+  select.replaceChildren(
+    new Option(placeholder,'')
+  );
 
-    for(const p of [...players].sort((a,b)=>
-        a.name.localeCompare(b.name)
-    )) {
-        select.add(new Option(p.name,p.id));
-    }
+  for(const p of [...players].sort((a,b)=>
+    a.name.localeCompare(b.name)
+  )){
+    select.add(new Option(p.name,p.id));
+  }
 
-    if([...select.options].some(x=>x.value===previous)) {
-        select.value=previous;
-    }
+  if([...select.options].some(
+    x=>x.value===previous
+  )){
+    select.value=previous;
+  }
 }
 
-async function loadPlayers() {
-    const {data,error} = await db
-        .from('players')
-        .select('id,name,points,wins,losses');
+async function loadPlayers(){
+  const {data,error}=await db
+    .from('players')
+    .select('id,name,points,wins,losses');
 
-    if(error) {
-        message('Cannot load rankings: '+error.message);
-        return false;
-    }
+  if(error){
+    message('Cannot load rankings: '+error.message);
+    return false;
+  }
 
-    players=data||[];
-    renderRankings();
+  players=data||[];
+  renderRankings();
 
-    for(const id of [
-        'hLeft','hRight',
-        't1p1','t1p2','t2p1','t2p2',
-        'claimPlayer'
-    ]) optionList(id);
+  for(const id of [
+    'hLeft','hRight',
+    't1p1','t1p2','t2p1','t2p2',
+    'claimPlayer'
+  ]){
+    optionList(id);
+  }
 
-    if(!$('hLeft').value && sorted()[0]) {
-        $('hLeft').value=sorted()[0].id;
-    }
+  if(!$('hLeft').value&&sorted()[0]){
+    $('hLeft').value=sorted()[0].id;
+  }
 
-    if(!$('hRight').value && sorted()[1]) {
-        $('hRight').value=sorted()[1].id;
-    }
+  if(!$('hRight').value&&sorted()[1]){
+    $('hRight').value=sorted()[1].id;
+  }
 
-    return true;
+  return true;
 }
 
-function renderRankings() {
-    const tbody=$('rankingsBody');
-    tbody.replaceChildren();
+/* RENDER RANKINGS */
 
-    sorted().forEach((p,i)=>{
-        const tr=el('tr');
+function renderRankings(){
+  const tbody=$('rankingsBody');
+  tbody.replaceChildren();
 
-        for(const [v,c] of [
-            [i+1,'rank'],
-            [p.name,'player'],
-            [p.points.toLocaleString(),''],
-            [p.wins,''],
-            [p.losses,''],
-            [pct(p),'']
-        ]) {
-            tr.append(el('td',String(v),c));
-        }
+  sorted().forEach((p,i)=>{
+    const tr=el('tr');
 
-        tbody.append(tr);
-    });
+    for(const [v,c] of [
+      [i+1,'rank'],
+      [p.name,'player'],
+      [p.points.toLocaleString(),''],
+      [p.wins,''],
+      [p.losses,''],
+      [pct(p),'']
+    ]){
+      tr.append(el('td',String(v),c));
+    }
+
+    tbody.append(tr);
+  });
 }
 
 /* ACCOUNT STATUS */
 
-async function loadIdentity() {
-    const {data:{user:u}} = await db.auth.getUser();
+async function loadIdentity(){
+  const {data:{user:u},error:authError}=
+    await db.auth.getUser();
 
-    user=u;
-    isAdmin=false;
-    account=null;
+  user=authError?null:u;
+  isAdmin=false;
+  account=null;
 
-    if(u) {
-        const a=await db
-            .from('club_admins')
-            .select('user_id')
-            .eq('user_id',u.id)
-            .maybeSingle();
+  if(user){
+    const a=await db
+      .from('club_admins')
+      .select('user_id')
+      .eq('user_id',user.id)
+      .maybeSingle();
 
-        isAdmin=!!a.data&&!a.error;
+    isAdmin=!!a.data&&!a.error;
 
-        const b=await db
-            .from('player_accounts')
-            .select('player_id,approved')
-            .eq('user_id',u.id)
-            .maybeSingle();
+    const b=await db
+      .from('player_accounts')
+      .select('player_id,approved')
+      .eq('user_id',user.id)
+      .maybeSingle();
 
-        account=b.data||null;
-    }
+    account=b.data||null;
+  }
 
-    $('signedOut').classList.toggle('hidden',!!user);
-    $('signedIn').classList.toggle('hidden',!user);
-    $('adminButton').classList.toggle('hidden',!isAdmin);
+  $('signedOut').classList.toggle('hidden',!!user);
+  $('signedIn').classList.toggle('hidden',!user);
+  $('adminButton').classList.toggle(
+    'hidden',!isAdmin
+  );
 
-    $('myEmail').textContent=user?.email||'';
+  $('myEmail').textContent=user?.email||'';
 
-    $('myRole').textContent=isAdmin
-        ? 'Administrator'
-        : account?.approved
-            ? `Verified player: ${nameOf(account.player_id)}`
-            : account
-                ? 'Player link awaiting admin approval'
-                : 'Player link not requested';
+  $('myRole').textContent=[
+    isAdmin?'Administrator':null,
+    account?.approved
+      ? `Verified player: ${nameOf(account.player_id)}`
+      : account
+        ? 'Player link awaiting admin approval'
+        : 'Player link not requested'
+  ].filter(Boolean).join(' · ');
 
-    $('linkSection').classList.toggle(
-        'hidden',!user||!!account?.approved
-    );
+  $('linkSection').classList.toggle(
+    'hidden',
+    !user||!!account?.approved
+  );
 
-    $('claimButton').disabled=!!account?.approved;
+  $('submitFormPanel').classList.toggle(
+    'hidden',!account?.approved
+  );
 
-    $('submitFormPanel').classList.toggle(
-        'hidden',
-        !user||(!account?.approved&&!isAdmin)
-    );
+  $('submitGate').textContent=!user
+    ? 'Please create an account or log in under My Account.'
+    : !account?.approved
+      ? 'Your player identity must be approved before you can submit matches.'
+      : 'Your account is approved. You can submit matches below.';
 
-    $('submitGate').textContent=!user
-        ? 'Please create an account or log in under My Account.'
-        : (!account?.approved&&!isAdmin)
-            ? 'Your player identity must be approved before you can submit matches.'
-            : 'You can submit matches using the form below.';
+  if(page==='submit'){
+    await loadPending();
+  }
 
-    if(page==='submit') await loadPending();
-    if(isAdmin&&page==='admin') await loadAdmin();
+  if(isAdmin&&page==='admin'){
+    await loadAdmin();
+  }
+
+  if(!isAdmin&&page==='admin'){
+    show('rankings');
+  }
 }
 
 /* NAVIGATION */
 
-function show(next) {
-    page=next;
+function show(next){
+  if(next==='admin'&&!isAdmin){
+    return;
+  }
 
-    for(const id of [
-        'rankings','h2h','submit','account','admin'
-    ]) {
-        $(id+'Page').classList.toggle(
-            'hidden',id!==next
-        );
-    }
+  page=next;
 
-    document.querySelectorAll('.nav button')
-    .forEach(b=>b.classList.toggle(
+  for(const id of [
+    'rankings','h2h','submit','account','admin'
+  ]){
+    $(id+'Page').classList.toggle(
+      'hidden',id!==next
+    );
+  }
+
+  document.querySelectorAll('.nav button')
+    .forEach(b=>{
+      b.classList.toggle(
         'active',b.dataset.page===next
-    ));
+      );
+    });
 
-    $('heroTitle').textContent={
-        rankings:'Official Rankings',
-        h2h:'Head-to-Head',
-        submit:'Submit Match',
-        account:'Player Accounts',
-        admin:'Admin Tools'
-    }[next];
+  $('heroTitle').textContent={
+    rankings:'Official Rankings',
+    h2h:'Head-to-Head',
+    submit:'Submit Match',
+    account:'Player Accounts',
+    admin:'Admin Tools'
+  }[next];
 
-    if(next==='h2h') refreshH2H();
-    if(next==='submit') loadPending();
-    if(next==='admin') loadAdmin();
+  if(next==='h2h')refreshH2H();
+  if(next==='submit')loadPending();
+  if(next==='admin')loadAdmin();
 
-    window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
 }
 
 document.querySelectorAll('.nav button')
-.forEach(b=>b.addEventListener(
-    'click',()=>show(b.dataset.page)
-));
+  .forEach(b=>{
+    b.addEventListener('click',()=>{
+      show(b.dataset.page);
+    });
+  });
 
 $('adminButton').onclick=()=>show('admin');
 
 /* HEAD TO HEAD */
 
-async function refreshH2H() {
-    const s=++hSeq;
+async function refreshH2H(){
+  const s=++hSeq;
 
-    const left=players.find(
-        p=>p.id===Number($('hLeft').value)
-    );
+  const left=players.find(
+    p=>p.id===Number($('hLeft').value)
+  );
 
-    const right=players.find(
-        p=>p.id===Number($('hRight').value)
-    );
+  const right=players.find(
+    p=>p.id===Number($('hRight').value)
+  );
 
-    $('hResults').classList.add('hidden');
+  $('hResults').classList.add('hidden');
 
-    if(!left||!right||left.id===right.id) {
-        $('hStatus').textContent=
-            'Choose two different registered players.';
-        return;
+  if(!left||!right||left.id===right.id){
+    $('hStatus').textContent=
+      'Choose two different registered players.';
+    return;
+  }
+
+  for(const [i,p] of [[1,left],[2,right]]){
+    $('hInitial'+i).textContent=initial(p.name);
+    $('hName'+i).textContent=p.name;
+
+    $('hRank'+i).textContent=
+      'Rank '+(
+        sorted().findIndex(x=>x.id===p.id)+1
+      );
+
+    $('hElo'+i).textContent=
+      p.points.toLocaleString();
+
+    $('hRecord'+i).textContent=
+      p.wins+'–'+p.losses;
+
+    $('hPct'+i).textContent=pct(p);
+  }
+
+  $('hStatus').textContent='Loading...';
+
+  const {data,error}=await db.rpc(
+    'club_head_to_head',{
+      p_left:left.id,
+      p_right:right.id
     }
+  );
 
-    for(const [i,p] of [[1,left],[2,right]]) {
-        $('hInitial'+i).textContent=initial(p.name);
-        $('hName'+i).textContent=p.name;
+  if(s!==hSeq)return;
 
-        $('hRank'+i).textContent=
-            'Rank '+(sorted().findIndex(
-                x=>x.id===p.id
-            )+1);
+  if(error){
+    $('hStatus').textContent=
+      'H2H unavailable: '+error.message;
+    return;
+  }
 
-        $('hElo'+i).textContent=
-            p.points.toLocaleString();
+  const r=Array.isArray(data)?data[0]:data;
 
-        $('hRecord'+i).textContent=
-            p.wins+'–'+p.losses;
+  $('hWins1').textContent=r?.left_wins??0;
+  $('hWins2').textContent=r?.right_wins??0;
 
-        $('hPct'+i).textContent=pct(p);
-    }
+  $('hMeetings').textContent=
+    `${r?.meetings??0} opposing-team match(es)`;
 
-    $('hStatus').textContent='Loading...';
-
-    const {data,error}=await db.rpc(
-        'club_head_to_head',{
-            p_left:left.id,
-            p_right:right.id
-        }
-    );
-
-    if(s!==hSeq) return;
-
-    if(error) {
-        $('hStatus').textContent=
-            'H2H unavailable: '+error.message;
-        return;
-    }
-
-    const r=Array.isArray(data)?data[0]:data;
-
-    $('hWins1').textContent=r?.left_wins||0;
-    $('hWins2').textContent=r?.right_wins||0;
-
-    $('hMeetings').textContent=
-        `${r?.meetings||0} opposing-team match(es)`;
-
-    $('hStatus').textContent='';
-    $('hResults').classList.remove('hidden');
+  $('hStatus').textContent='';
+  $('hResults').classList.remove('hidden');
 }
 
 $('hLeft').onchange=refreshH2H;
@@ -711,643 +986,753 @@ $('hRight').onchange=refreshH2H;
 /* SIGN UP */
 
 $('signupForm').onsubmit=async e=>{
-    e.preventDefault();
+  e.preventDefault();
 
-    const email=$('signupEmail').value.trim();
-    const password=$('signupPassword').value;
-    const redirect=location.origin+location.pathname;
+  const email=$('signupEmail').value.trim();
+  const password=$('signupPassword').value;
+  const redirect=location.origin+location.pathname;
 
-    const {error}=await db.auth.signUp({
-        email,
-        password,
-        options:{emailRedirectTo:redirect}
-    });
+  const {error}=await db.auth.signUp({
+    email,
+    password,
+    options:{emailRedirectTo:redirect}
+  });
 
-    message(error
-        ? 'Sign up failed: '+error.message
-        : 'Account created. Check your email for a verification link, then log in.'
-    );
+  message(error
+    ? 'Sign up failed: '+error.message
+    : 'Check your email for a verification link, then log in.'
+  );
 
-    if(!error) $('signupPassword').value='';
+  if(!error){
+    $('signupPassword').value='';
+  }
 };
 
 /* LOGIN */
 
 $('loginForm').onsubmit=async e=>{
-    e.preventDefault();
+  e.preventDefault();
 
-    const {error}=await db.auth.signInWithPassword({
-        email:$('loginEmail').value.trim(),
-        password:$('loginPassword').value
-    });
+  const {error}=await db.auth.signInWithPassword({
+    email:$('loginEmail').value.trim(),
+    password:$('loginPassword').value
+  });
 
-    $('loginPassword').value='';
+  $('loginPassword').value='';
 
-    if(error) {
-        message('Login failed: '+error.message);
-        return;
-    }
+  if(error){
+    message('Login failed: '+error.message);
+    return;
+  }
 
-    await loadIdentity();
-    message('Signed in.');
+  await loadIdentity();
+  message('Signed in.');
 };
 
 /* LOGOUT */
 
 $('logoutButton').onclick=async()=>{
-    await db.auth.signOut();
-    await loadIdentity();
-    show('rankings');
-    message('Logged out.');
+  const {error}=await db.auth.signOut();
+
+  if(error){
+    message('Logout failed: '+error.message);
+    return;
+  }
+
+  await loadIdentity();
+  show('rankings');
+  message('Logged out.');
 };
 
 /* PASSWORD RESET */
 
 $('forgotButton').onclick=async()=>{
-    const email=$('loginEmail').value.trim()
-        ||prompt('Enter your account email');
+  const email=$('loginEmail').value.trim()
+    ||prompt('Enter your account email');
 
-    if(!email) return;
+  if(!email)return;
 
-    const {error}=await db.auth.resetPasswordForEmail(
-        email,{
-            redirectTo:location.origin+location.pathname
-        }
-    );
+  const {error}=await db.auth.resetPasswordForEmail(
+    email,{
+      redirectTo:location.origin+location.pathname
+    }
+  );
 
-    message(error
-        ? error.message
-        : 'Password reset email requested. Check your inbox.'
-    );
+  message(error
+    ? error.message
+    : 'Password reset email requested. Check your inbox.'
+  );
 };
 
-db.auth.onAuthStateChange((event)=>{
-    if(event==='PASSWORD_RECOVERY') {
-        show('account');
+db.auth.onAuthStateChange(event=>{
+  if(event==='PASSWORD_RECOVERY'){
+    show('account');
 
-        const pass=prompt(
-            'Enter your new password (at least 8 characters)'
+    const pass=prompt(
+      'Enter your new password (at least 8 characters)'
+    );
+
+    if(pass&&pass.length>=8){
+      db.auth.updateUser({
+        password:pass
+      }).then(({error})=>{
+        message(error
+          ? error.message
+          : 'Password updated.'
         );
-
-        if(pass&&pass.length>=8) {
-            db.auth.updateUser({password:pass})
-            .then(({error})=>message(
-                error?error.message:'Password updated.'
-            ));
-        }
+      });
     }
+  }
 });
 
 /* REQUEST PLAYER APPROVAL */
 
 $('claimButton').onclick=async()=>{
-    const p=Number($('claimPlayer').value);
+  const p=Number($('claimPlayer').value);
 
-    if(!p) {
-        message('Select your registered player name.');
-        return;
+  if(!p){
+    message('Select your registered player name.');
+    return;
+  }
+
+  const {error}=await db.rpc(
+    'request_player_link',{
+      p_player_id:p
     }
+  );
 
-    const {error}=await db.rpc(
-        'request_player_link',{p_player_id:p}
-    );
+  message(error
+    ? 'Link request failed: '+error.message
+    : 'Request submitted for admin approval.'
+  );
 
-    message(error
-        ? 'Link request failed: '+error.message
-        : 'Request submitted for admin approval.'
-    );
-
-    await loadIdentity();
+  await loadIdentity();
 };
 
 /* MATCH VALIDATION */
 
-function matchInfo() {
-    const ids=[
-        't1p1','t1p2','t2p1','t2p2'
-    ].map(x=>Number($(x).value));
+function matchInfo(){
+  const ids=[
+    't1p1','t1p2','t2p1','t2p2'
+  ].map(x=>Number($(x).value));
 
-    const best=Number($('bestOf').value);
-    const target=Number($('gameTarget').value);
+  const best=Number($('bestOf').value);
+  const target=Number($('gameTarget').value);
 
-    const a=$('score1').value.trim();
-    const b=$('score2').value.trim();
+  const a=$('score1').value.trim();
+  const b=$('score2').value.trim();
 
-    const s1=Number(a);
-    const s2=Number(b);
+  const s1=Number(a);
+  const s2=Number(b);
 
-    if(ids.some(x=>!x)||new Set(ids).size!==4) {
-        return {error:'Choose four different players.'};
-    }
+  if(ids.some(x=>!x)||new Set(ids).size!==4){
+    return {
+      error:'Choose four different players.'
+    };
+  }
 
-    if(
-        account?.approved &&
-        !ids.includes(account.player_id)
-    ) {
-        return {error:'You must be one of the four players.'};
-    }
+  if(
+    account?.approved&&
+    !ids.includes(account.player_id)
+  ){
+    return {
+      error:'You must be one of the four players.'
+    };
+  }
 
-    if(
-        !a||!b||
-        ![s1,s2].every(x=>
-            Number.isInteger(x)&&x>=0&&x<=999
-        )||s1===s2
-    ) {
-        return {error:'Enter valid scores without a tie.'};
-    }
+  if(
+    !a||!b||
+    ![s1,s2].every(x=>
+      Number.isInteger(x)&&x>=0&&x<=999
+    )||
+    s1===s2
+  ){
+    return {
+      error:'Enter valid scores without a tie.'
+    };
+  }
 
-    const hi=Math.max(s1,s2);
-    const lo=Math.min(s1,s2);
+  const hi=Math.max(s1,s2);
+  const lo=Math.min(s1,s2);
 
-    if(
-        best===1 &&
-        !(
-            (hi===target&&lo<=target-2)||
-            (lo>=target-1&&hi===lo+2)
-        )
-    ) {
-        return {
-            error:'Single game must reach '+target+
-                  ' and win by two.'
-        };
-    }
+  if(
+    best===1&&
+    !(
+      (hi===target&&lo<=target-2)||
+      (lo>=target-1&&hi===lo+2)
+    )
+  ){
+    return {
+      error:'Single game must reach '+
+        target+' and win by two.'
+    };
+  }
 
-    if(
-        best>1 &&
-        (
-            hi!==(best+1)/2 ||
-            lo>=(best+1)/2
-        )
-    ) {
-        return {
-            error:best===3
-                ? 'Enter 2–0 or 2–1 (either way).'
-                : 'Enter 3–0, 3–1, or 3–2 (either way).'
-        };
-    }
+  if(
+    best>1&&(
+      hi!==(best+1)/2||
+      lo>=(best+1)/2
+    )
+  ){
+    return {
+      error:best===3
+        ? 'Enter 2–0 or 2–1, either way.'
+        : 'Enter 3–0, 3–1, or 3–2, either way.'
+    };
+  }
 
-    return {ids,best,target,s1,s2};
+  return {ids,best,target,s1,s2};
 }
 
-/* FORMAT AND ELO PREVIEW */
+/* MATCH FORMAT */
 
-function updateFormat() {
-    const best=Number($('bestOf').value);
+function updateFormat(){
+  const best=Number($('bestOf').value);
 
-    $('targetField').classList.toggle(
-        'hidden',best!==1
-    );
+  $('targetField').classList.toggle(
+    'hidden',best!==1
+  );
 
-    $('scoreTitle').textContent=best===1
-        ? 'Final Game Score'
-        : 'Final Series Score';
+  $('scoreTitle').textContent=best===1
+    ? 'Final Game Score'
+    : 'Final Series Score';
 
-    $('scoreHelp').textContent=best===1
-        ? 'Win by two, to 7 or 11.'
-        : best===3
-            ? 'Enter sets won: 2–0 or 2–1, either direction.'
-            : 'Enter sets won: 3–0, 3–1, or 3–2, either direction.';
+  $('scoreHelp').textContent=best===1
+    ? 'Win by two, to 7 or 11.'
+    : best===3
+      ? 'Enter sets won: 2–0 or 2–1.'
+      : 'Enter sets won: 3–0, 3–1, or 3–2.';
 
-    $('score1').value='';
-    $('score2').value='';
+  $('score1').value='';
+  $('score2').value='';
 
-    preview();
+  preview();
 }
 
-function preview() {
-    const m=matchInfo();
+/* ELO PREVIEW */
 
-    if(m.error) {
-        $('matchPreview').textContent=m.error;
-        return;
-    }
+function preview(){
+  const m=matchInfo();
 
-    const ratings=m.ids.map(id=>
-        players.find(p=>p.id===id).points
-    );
+  if(m.error){
+    $('matchPreview').textContent=m.error;
+    return;
+  }
 
-    const r1=(ratings[0]+ratings[1])/2;
-    const r2=(ratings[2]+ratings[3])/2;
+  const ratings=m.ids.map(id=>
+    players.find(p=>p.id===id)?.points
+  );
 
-    const k=m.best===5?60:
-        m.best===3?40:
-        m.target===7?16:24;
-
-    const expected=1/(
-        1+10**((r2-r1)/400)
-    );
-
-    const change=Math.round(
-        k*((m.s1>m.s2?1:0)-expected)
-    );
-
-    const winningIds=m.s1>m.s2
-        ? m.ids.slice(0,2)
-        : m.ids.slice(2,4);
-
+  if(ratings.some(r=>!Number.isFinite(r))){
     $('matchPreview').textContent=
-        `Winner: ${winningIds.map(nameOf).join(' & ')}. `+
-        `Estimated Team 1 Elo: ${change>=0?'+':''}${change} each; `+
-        `Team 2: ${-change>=0?'+':''}${-change} each. `+
-        `No ratings change until confirmation.`;
+      'Unable to calculate Elo.';
+    return;
+  }
+
+  const r1=(ratings[0]+ratings[1])/2;
+  const r2=(ratings[2]+ratings[3])/2;
+
+  const k=m.best===5?60:
+    m.best===3?40:
+    m.target===7?16:24;
+
+  const expected=1/(
+    1+10**((r2-r1)/400)
+  );
+
+  const change=Math.round(
+    k*((m.s1>m.s2?1:0)-expected)
+  );
+
+  const winningIds=m.s1>m.s2
+    ?m.ids.slice(0,2)
+    :m.ids.slice(2,4);
+
+  const plus=n=>(n>=0?'+':'')+n;
+
+  $('matchPreview').textContent=
+    `Winner: ${winningIds.map(nameOf).join(' & ')}. `+
+    `Estimated Team 1 Elo: ${plus(change)} each; `+
+    `Team 2: ${plus(-change)} each. `+
+    `No ratings change until a losing player confirms.`;
 }
 
 $('bestOf').onchange=updateFormat;
 $('gameTarget').onchange=updateFormat;
 
 for(const id of [
-    't1p1','t1p2','t2p1','t2p2',
-    'score1','score2'
-]) {
-    $(id).addEventListener('input',preview);
+  't1p1','t1p2','t2p1','t2p2',
+  'score1','score2'
+]){
+  $(id).addEventListener('input',preview);
 }
 
 /* SUBMIT MATCH */
 
 $('matchForm').onsubmit=async e=>{
-    e.preventDefault();
+  e.preventDefault();
 
-    if(!user||!account?.approved) {
-        message('You must have an approved player account.');
-        return;
-    }
-
-    const m=matchInfo();
-
-    if(m.error) {
-        message(m.error);
-        return;
-    }
-
-    if(!confirm(
-        `Submit ${m.s1}–${m.s2} for confirmation? `+
-        `Elo will not change until approved.`
-    )) return;
-
-    const button=$('submitMatchButton');
-    button.disabled=true;
-
-    const {error}=await db.rpc(
-        'submit_club_match',{
-            p_team1_player1:m.ids[0],
-            p_team1_player2:m.ids[1],
-            p_team2_player1:m.ids[2],
-            p_team2_player2:m.ids[3],
-            p_game_target:m.target,
-            p_best_of:m.best,
-            p_team1_score:m.s1,
-            p_team2_score:m.s2
-        }
+  if(!user||!account?.approved){
+    message(
+      'You must have an approved player account.'
     );
+    return;
+  }
 
-    button.disabled=false;
+  const m=matchInfo();
 
-    if(error) {
-        message('Submission failed: '+error.message);
-        return;
+  if(m.error){
+    message(m.error);
+    return;
+  }
+
+  if(!confirm(
+    `Submit ${m.s1}–${m.s2} for confirmation? `+
+    `Elo will not change until approved.`
+  )){
+    return;
+  }
+
+  const button=$('submitMatchButton');
+  button.disabled=true;
+
+  const {error}=await db.rpc(
+    'submit_club_match',{
+      p_team1_player1:m.ids[0],
+      p_team1_player2:m.ids[1],
+      p_team2_player1:m.ids[2],
+      p_team2_player2:m.ids[3],
+      p_game_target:m.target,
+      p_best_of:m.best,
+      p_team1_score:m.s1,
+      p_team2_score:m.s2
     }
+  );
 
-    $('matchForm').reset();
-    updateFormat();
+  button.disabled=false;
 
-    message('Match submitted. An opponent must confirm it.');
-    await loadPending();
+  if(error){
+    message('Submission failed: '+error.message);
+    return;
+  }
+
+  $('matchForm').reset();
+  updateFormat();
+
+  message(
+    'Match submitted. A losing player must confirm it.'
+  );
+
+  await loadPending();
 };
+
+/* DESCRIBE MATCH */
+
+function describeMatch(m){
+  const fmt=m.best_of===1
+    ?`Single to ${m.game_target}`
+    :`Best of ${m.best_of}`;
+
+  return (
+    `${nameOf(m.team1_player1)} & `+
+    `${nameOf(m.team1_player2)} vs `+
+    `${nameOf(m.team2_player1)} & `+
+    `${nameOf(m.team2_player2)} · `+
+    `${fmt} · `+
+    `${m.team1_score}–${m.team2_score}`
+  );
+}
+
+/* IDENTIFY LOSING TEAM */
+
+function losingPlayers(m){
+  return m.team1_score>m.team2_score
+    ?[m.team2_player1,m.team2_player2]
+    :[m.team1_player1,m.team1_player2];
+}
+
+/* IDENTIFY WHO CAN CONFIRM */
+
+function canReviewMatch(m){
+  if(!user)return false;
+
+  // Admin can override.
+  if(isAdmin)return true;
+
+  // Regular user needs an approved player account.
+  if(!account?.approved)return false;
+
+  // Nobody can confirm their own submission.
+  if(m.submitted_by===user.id)return false;
+
+  // ONLY a losing player can confirm.
+  return losingPlayers(m).includes(
+    account.player_id
+  );
+}
 
 /* PENDING MATCH DISPLAY */
 
-function describeMatch(m) {
-    const fmt=m.best_of===1
-        ? `Single to ${m.game_target}`
-        : `Best of ${m.best_of}`;
+async function loadPending(){
+  const area=$('myPending');
+  area.replaceChildren();
 
-    return (
-        `${nameOf(m.team1_player1)} & ${nameOf(m.team1_player2)} `+
-        `vs ${nameOf(m.team2_player1)} & ${nameOf(m.team2_player2)} `+
-        `· ${fmt} · ${m.team1_score}–${m.team2_score}`
+  if(!user){
+    area.textContent=
+      'Log in to view pending matches.';
+    return;
+  }
+
+  const {data,error}=await db
+    .from('pending_matches')
+    .select('*')
+    .eq('status','pending')
+    .order('created_at',{ascending:false});
+
+  if(error){
+    area.textContent=error.message;
+    return;
+  }
+
+  if(!data?.length){
+    area.textContent='No pending matches.';
+    return;
+  }
+
+  for(const m of data){
+    const row=el('div',undefined,'request');
+    const details=el('div');
+
+    details.append(
+      el('strong',describeMatch(m))
     );
+
+    const role=m.submitted_by===user.id
+      ?'Submitted by you · Awaiting losing-team confirmation'
+      :canReviewMatch(m)
+        ?'Your confirmation is requested'
+        :'Awaiting losing-team confirmation';
+
+    details.append(
+      el('span',role,'muted')
+    );
+
+    row.append(details);
+
+    if(canReviewMatch(m)){
+      const buttons=el('div',undefined,'buttons');
+
+      const confirmButton=el(
+        'button','Confirm Result','primary'
+      );
+
+      confirmButton.onclick=()=>reviewMatch(
+        m.id,true
+      );
+
+      const rejectButton=el(
+        'button','Dispute Result','danger'
+      );
+
+      rejectButton.onclick=()=>reviewMatch(
+        m.id,false
+      );
+
+      buttons.append(
+        confirmButton,
+        rejectButton
+      );
+
+      row.append(buttons);
+    }
+
+    area.append(row);
+  }
 }
 
-async function loadPending() {
-    const area=$('myPending');
-    area.replaceChildren();
+/* REVIEW MATCH */
 
-    if(!user) {
-        area.textContent='Log in to review matches.';
-        return;
+async function reviewMatch(id,approve){
+  if(busyReview)return;
+
+  const promptText=approve
+    ?'Confirm this result and update all player ratings?'
+    :'Dispute this match without changing rankings?';
+
+  if(!confirm(promptText))return;
+
+  busyReview=true;
+
+  const {error}=await db.rpc(
+    'review_club_match',{
+      p_match_id:id,
+      p_approve:approve
     }
+  );
 
-    const {data,error}=await db
-        .from('pending_matches')
-        .select('*')
-        .eq('status','pending')
-        .order('created_at',{ascending:false});
+  busyReview=false;
 
-    if(error) {
-        area.textContent=error.message;
-        return;
-    }
+  if(error){
+    message('Review failed: '+error.message);
+    return;
+  }
 
-    if(!data?.length) {
-        area.textContent='No pending matches.';
-        return;
-    }
+  message(approve
+    ?'Match confirmed. Rankings updated.'
+    :'Match disputed and rejected.'
+  );
 
-    for(const m of data) {
-        const row=el('div',undefined,'request');
-        const details=el('div');
+  await loadPlayers();
 
-        details.append(el('strong',describeMatch(m)));
-
-        details.append(el(
-            'span',
-            m.submitted_by===user.id
-                ? 'Submitted by you'
-                : 'Awaiting confirmation',
-            'muted'
-        ));
-
-        row.append(details);
-
-        const buttons=el('div',undefined,'buttons');
-
-        const current=account?.approved
-            ? account.player_id
-            : null;
-
-        const team=p=>
-            [m.team1_player1,m.team1_player2].includes(p)
-                ? 1
-                : [m.team2_player1,m.team2_player2].includes(p)
-                    ? 2
-                    : 0;
-
-
-const losingPlayers =
-    m.team1_score > m.team2_score
-        ? [m.team2_player1, m.team2_player2]
-        : [m.team1_player1, m.team1_player2];
-
-const canApprove = isAdmin || (
-    account?.approved === true &&
-    m.submitted_by !== user.id &&
-    losingPlayers.includes(account.player_id)
-);
-            current &&
-            m.submitted_by!==user.id &&
-            team(current)>0 &&
-            (team(current)!==(
-                [m.team1_player1,m.team1_player2]
-                .includes(
-                    players.find(p=>p.id===current)?.id
-                )?1:2
-            ) || true)
-        );
-
-        if(canApprove) {
-            for(const [yes,label,cls] of [
-                [true,'Confirm','primary'],
-                [false,'Dispute','danger']
-            ]) {
-                const b=el('button',label,cls);
-                b.onclick=()=>reviewMatch(m.id,yes);
-                buttons.append(b);
-            }
-        }
-
-        row.append(buttons);
-        area.append(row);
-    }
-}
-
-/* CONFIRM OR REJECT */
-
-async function reviewMatch(id,approve) {
-    if(!confirm(
-        approve
-            ? 'Confirm this result and update all Elo ratings?'
-            : 'Reject this match without changing rankings?'
-    )) return;
-
-    const {error}=await db.rpc(
-        'review_club_match',{
-            p_match_id:id,
-            p_approve:approve
-        }
-    );
-
-    if(error) {
-        message(error.message);
-        return;
-    }
-
-    message(approve
-        ? 'Match confirmed. Rankings updated.'
-        : 'Match rejected.'
-    );
-
-    await loadPlayers();
+  if(page==='submit'){
     await loadPending();
+  }
 
-    if(isAdmin&&page==='admin') await loadAdmin();
+  if(isAdmin&&page==='admin'){
+    await loadAdmin();
+  }
 }
 
 /* ADMIN DASHBOARD */
 
-async function loadAdmin() {
-    if(!isAdmin) return;
+async function loadAdmin(){
+  if(!isAdmin)return;
 
-    const area=$('adminClaims');
-    area.replaceChildren();
+  const area=$('adminClaims');
+  area.replaceChildren();
 
-    const {data,error}=await db.rpc(
-        'admin_pending_player_links'
-    );
+  const {data,error}=await db.rpc(
+    'admin_pending_player_links'
+  );
 
-    if(error) {
-        area.textContent=error.message;
-    } else if(!data?.length) {
-        area.textContent='No pending player requests.';
-    } else {
-        for(const a of data) {
-            const row=el('div',undefined,'request');
+  if(error){
+    area.textContent=error.message;
+  }else if(!data?.length){
+    area.textContent='No pending player requests.';
+  }else{
+    for(const a of data){
+      const row=el('div',undefined,'request');
 
-            row.append(el(
-                'div',
-                `Requested: ${nameOf(a.player_id)} `+
-                `· Account email: ${a.email}`
-            ));
+      row.append(
+        el('div',
+          `Requested: ${nameOf(a.player_id)} · `+
+          `Account email: ${a.email}`
+        )
+      );
 
-            const actions=el('div',undefined,'buttons');
+      const actions=el(
+        'div',undefined,'buttons'
+      );
 
-            for(const [yes,label,cls] of [
-                [true,'Approve','primary'],
-                [false,'Reject','danger']
-            ]) {
-                const b=el('button',label,cls);
+      for(const [yes,label,cls] of [
+        [true,'Approve','primary'],
+        [false,'Reject','danger']
+      ]){
+        const b=el('button',label,cls);
 
-                b.onclick=async()=>{
-                    if(!confirm(
-                        `${label} link request for `+
-                        `${nameOf(a.player_id)}? `+
-                        `Verify the player outside the website first.`
-                    )) return;
+        b.onclick=async()=>{
+          if(!confirm(
+            `${label} player account for `+
+            `${nameOf(a.player_id)}?`
+          )){
+            return;
+          }
 
-                    const {error}=await db.rpc(
-                        'review_player_link',{
-                            p_user_id:a.user_id,
-                            p_approve:yes
-                        }
-                    );
-
-                    message(error
-                        ? error.message
-                        : 'Player request reviewed.'
-                    );
-
-                    if(!error) await loadAdmin();
-                };
-
-                actions.append(b);
+          const {error}=await db.rpc(
+            'review_player_link',{
+              p_user_id:a.user_id,
+              p_approve:yes
             }
+          );
 
-            row.append(actions);
-            area.append(row);
-        }
+          message(error
+            ?error.message
+            :'Player request reviewed.'
+          );
+
+          if(!error){
+            await loadIdentity();
+            await loadAdmin();
+          }
+        };
+
+        actions.append(b);
+      }
+
+      row.append(actions);
+      area.append(row);
     }
+  }
 
-    const matches=$('adminMatches');
-    matches.replaceChildren();
+  const matches=$('adminMatches');
+  matches.replaceChildren();
 
-    const r=await db
-        .from('pending_matches')
-        .select('*')
-        .eq('status','pending')
-        .order('created_at',{ascending:false});
+  const r=await db
+    .from('pending_matches')
+    .select('*')
+    .eq('status','pending')
+    .order('created_at',{ascending:false});
 
-    if(r.error) {
-        matches.textContent=r.error.message;
-    } else if(!r.data?.length) {
-        matches.textContent='No pending matches.';
-    } else {
-        for(const m of r.data) {
-            const row=el('div',undefined,'request');
-            row.append(el('div',describeMatch(m)));
+  if(r.error){
+    matches.textContent=r.error.message;
+  }else if(!r.data?.length){
+    matches.textContent='No pending matches.';
+  }else{
+    for(const m of r.data){
+      const row=el('div',undefined,'request');
 
-            const actions=el('div',undefined,'buttons');
+      row.append(
+        el('div',describeMatch(m))
+      );
 
-            for(const [yes,label,cls] of [
-                [true,'Approve','primary'],
-                [false,'Reject','danger']
-            ]) {
-                const b=el('button',label,cls);
-                b.onclick=()=>reviewMatch(m.id,yes);
-                actions.append(b);
-            }
+      const actions=el(
+        'div',undefined,'buttons'
+      );
 
-            row.append(actions);
-            matches.append(row);
-        }
+      for(const [yes,label,cls] of [
+        [true,'Approve','primary'],
+        [false,'Reject','danger']
+      ]){
+        const b=el('button',label,cls);
+
+        b.onclick=()=>reviewMatch(
+          m.id,yes
+        );
+
+        actions.append(b);
+      }
+
+      row.append(actions);
+      matches.append(row);
     }
+  }
 
-    renderEditor();
+  renderEditor();
 }
 
-/* ADMIN PLAYER REGISTRATION */
+/* REGISTER PLAYER */
 
 $('registerForm').onsubmit=async e=>{
-    e.preventDefault();
+  e.preventDefault();
 
-    const name=$('newPlayerName').value.trim();
-    if(!name) return;
+  if(!isAdmin)return;
 
-    const {error}=await db.rpc(
-        'register_club_player',{p_name:name}
-    );
+  const name=$('newPlayerName').value
+    .trim()
+    .replace(/\s+/g,' ');
 
-    message(error
-        ? 'Player registration failed: '+error.message
-        : `Registered ${name} at 1,500 Elo.`
-    );
+  if(!name)return;
 
-    if(!error) {
-        $('newPlayerName').value='';
-        await loadPlayers();
-        renderEditor();
+  const {error}=await db.rpc(
+    'register_club_player',{
+      p_name:name
     }
+  );
+
+  message(error
+    ?'Player registration failed: '+error.message
+    :`Registered ${name} at 1,500 Elo.`
+  );
+
+  if(!error){
+    $('newPlayerName').value='';
+    await loadPlayers();
+    renderEditor();
+  }
 };
 
-/* MANUAL RANKINGS */
+/* MANUAL RANKING EDITOR */
 
-function renderEditor() {
-    const area=$('editRows');
-    area.replaceChildren();
+function renderEditor(){
+  const area=$('editRows');
+  area.replaceChildren();
 
-    for(const p of sorted()) {
-        const row=el('div',undefined,'request');
+  for(const p of sorted()){
+    const row=el(
+      'div',undefined,'request'
+    );
 
-        row.append(el('strong',p.name));
+    row.append(el('strong',p.name));
 
-        const group=el('div',undefined,'inline');
+    const group=el(
+      'div',undefined,'inline'
+    );
 
-        for(const field of ['points','wins','losses']) {
-            const wrap=el('div');
-            const lab=el('label',field);
-            const inp=el('input');
+    for(const field of [
+      'points','wins','losses'
+    ]){
+      const wrap=el('div');
+      const lab=el('label',field);
+      const inp=el('input');
 
-            inp.type='number';
-            inp.min='0';
-            inp.step='1';
-            inp.max='2147483647';
-            inp.value=p[field];
-            inp.dataset.id=p.id;
-            inp.dataset.field=field;
-            inp.style.width='105px';
+      inp.type='number';
+      inp.min='0';
+      inp.step='1';
+      inp.max='2147483647';
+      inp.value=p[field];
+      inp.dataset.id=p.id;
+      inp.dataset.field=field;
+      inp.style.width='105px';
 
-            wrap.append(lab,inp);
-            group.append(wrap);
-        }
-
-        row.append(group);
-        area.append(row);
+      wrap.append(lab,inp);
+      group.append(wrap);
     }
+
+    row.append(group);
+    area.append(row);
+  }
 }
 
 $('saveRankings').onclick=async()=>{
-    const updates=sorted().map(p=>({id:p.id}));
+  if(!isAdmin)return;
 
-    for(const inp of $('editRows').querySelectorAll('input')) {
-        const n=Number(inp.value);
+  const updates=sorted().map(
+    p=>({id:p.id})
+  );
 
-        if(
-            inp.value.trim()==='' ||
-            !Number.isSafeInteger(n) ||
-            n<0 ||
-            n>2147483647
-        ) {
-            message('Enter valid nonnegative whole numbers.');
-            return;
-        }
+  for(const inp of
+    $('editRows').querySelectorAll('input')
+  ){
+    const n=Number(inp.value);
 
-        updates.find(
-            x=>x.id===Number(inp.dataset.id)
-        )[inp.dataset.field]=n;
+    if(
+      inp.value.trim()===''||
+      !Number.isSafeInteger(n)||
+      n<0||
+      n>2147483647
+    ){
+      message(
+        'Enter valid nonnegative whole numbers.'
+      );
+      return;
     }
 
-    if(!confirm(
-        'Override Elo and player records manually?'
-    )) return;
+    updates.find(
+      x=>x.id===Number(inp.dataset.id)
+    )[inp.dataset.field]=n;
+  }
 
-    const {error}=await db.rpc(
-        'update_rankings',{updates}
-    );
+  if(!confirm(
+    'Override Elo and player records manually?'
+  )){
+    return;
+  }
 
-    message(error
-        ? 'Save failed: '+error.message
-        : 'Rankings saved.'
-    );
+  const {error}=await db.rpc(
+    'update_rankings',{
+      updates
+    }
+  );
 
-    if(!error) await loadPlayers();
+  message(error
+    ?'Save failed: '+error.message
+    :'Rankings saved.'
+  );
+
+  if(!error){
+    await loadPlayers();
+    renderEditor();
+  }
 };
 
 /* INITIALIZE */
@@ -1357,5 +1742,6 @@ await loadIdentity();
 updateFormat();
 
 </script>
+
 </body>
 </html>
