@@ -2773,6 +2773,165 @@ window.addEventListener('popstate',()=>{
  }
 });
 
+/* ADMIN MATCH HISTORY / UNDO TEST MATCHES */
+
+// Create a new section inside Admin Tools.
+
+const matchHistoryPanel = document.createElement('div');
+matchHistoryPanel.className = 'panel';
+
+const historyHeading = document.createElement('h3');
+historyHeading.textContent = 'Match History';
+
+const historyExplanation = document.createElement('p');
+historyExplanation.className = 'muted';
+historyExplanation.textContent =
+    'Remove pending test matches or undo the most ' +
+    'recently confirmed match. Undoing a confirmed ' +
+    'match reverses its Elo and win/loss changes.';
+
+const historyList = document.createElement('div');
+historyList.id = 'adminHistory';
+
+matchHistoryPanel.append(
+    historyHeading,
+    historyExplanation,
+    historyList
+);
+
+// Place it directly below Review Submitted Matches.
+
+$('adminMatches')
+    .closest('.panel')
+    .after(matchHistoryPanel);
+
+
+// Fetch pending and confirmed matches.
+
+async function loadAdminHistory() {
+
+    if (!isAdmin) return;
+
+    const area = $('adminHistory');
+    area.replaceChildren();
+
+    const { data, error } = await db.rpc(
+        'admin_club_match_history'
+    );
+
+    if (error) {
+        area.textContent =
+            'Could not load match history: ' +
+            error.message;
+        return;
+    }
+
+    if (!data?.length) {
+        area.textContent = 'No matches recorded.';
+        return;
+    }
+
+    for (const match of data) {
+
+        const row = document.createElement('div');
+        row.className = 'request';
+
+        const details = document.createElement('div');
+
+        const description = document.createElement('strong');
+        description.textContent = describeMatch(match);
+
+        const statusLabel = document.createElement('span');
+        statusLabel.className = 'muted';
+
+        const pending = match.match_status === 'pending';
+
+        const date = match.created_at
+            ? new Date(match.created_at).toLocaleString()
+            : '';
+
+        statusLabel.textContent =
+            (pending ? 'Pending' : 'Confirmed') +
+            (date ? ' · ' + date : '') +
+            (
+                !match.can_delete
+                    ? ' · Only newest confirmed match can be undone'
+                    : ''
+            );
+
+        details.append(description, statusLabel);
+        row.append(details);
+
+        const deleteButton = document.createElement('button');
+
+        deleteButton.className = 'danger';
+
+        deleteButton.textContent = pending
+            ? 'Remove Pending Match'
+            : 'Undo Match';
+
+        deleteButton.disabled = !match.can_delete;
+
+        deleteButton.onclick = async () => {
+
+            const warning = pending
+                ? 'This pending match will be removed.'
+                : 'This will reverse the Elo points, wins, ' +
+                  'and losses for all four players.';
+
+            const confirmed = window.confirm(
+                'Remove this match?\n\n' +
+                describeMatch(match) +
+                '\n\n' +
+                warning
+            );
+
+            if (!confirmed) return;
+
+            deleteButton.disabled = true;
+
+            const { data: result, error: deleteError } =
+                await db.rpc(
+                    'admin_delete_club_match',
+                    {
+                        p_match_id: match.match_id
+                    }
+                );
+
+            if (deleteError) {
+                message(
+                    'Could not remove match: ' +
+                    deleteError.message
+                );
+
+                deleteButton.disabled = false;
+                return;
+            }
+
+            message(
+                result === 'confirmed'
+                    ? 'Match removed. Elo and records reversed.'
+                    : 'Pending match removed.'
+            );
+
+            await loadPlayers();
+            await loadAdmin();
+            await loadAdminHistory();
+        };
+
+        row.append(deleteButton);
+        area.append(row);
+    }
+}
+
+
+// Refresh the history whenever Admin Tools opens.
+
+$('adminButton').addEventListener(
+    'click',
+    loadAdminHistory
+);
+
 /* INITIALIZE */
 
 await loadPlayers();
